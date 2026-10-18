@@ -12,11 +12,19 @@
   <a href="https://www.digibizos.co.uk/open-source/digi-labs">
     <img src="https://img.shields.io/badge/Portable-ZIP_Build_(358MB)-a855f7?style=for-the-badge&logo=windows&logoColor=white" alt="Download Portable ZIP via Official Portal" />
   </a>
+  <a href="https://www.digibizos.co.uk/open-source">
+    <img src="https://img.shields.io/badge/🎁_Get_Free_Softwares-15+_Desktop_Tools_Hub-ff007f?style=for-the-badge&logo=windows&logoColor=white" alt="Get Free Softwares Hub" />
+  </a>
   <a href="https://www.digibizos.co.uk/open-source/digi-labs">
     <img src="https://img.shields.io/badge/Web_Portal-Documentation-7928ca?style=for-the-badge" alt="Portal & Docs" />
   </a>
   <img src="https://img.shields.io/badge/License-Source--Available-blue?style=for-the-badge" alt="License" />
 </p>
+
+> 🚀 **LOOKING FOR MORE FREE AI & CREATIVE SOFTWARES?**  
+> DIGI LABS is 100% free and open-source. Want more autonomous desktop tools? Explore the complete **[Official DIGIFORMATION Free Software Suite (15+ Windows Tools)](https://www.digibizos.co.uk/open-source)** — including **DIGI Lead Hunter** (B2B lead scraper & map opportunity engine), **OpenCut** (CapCut Pro video editor alternative), **Jan AI** (offline local LLMs), **Upscayl** (AI image upscaler), and more. Zero monthly fees, zero subscriptions!  
+>  
+> 👉 **[🔥 Get Free Softwares — Browse Full 15+ Desktop Tools Hub](https://www.digibizos.co.uk/open-source)**
 
 ---
 
@@ -162,6 +170,7 @@ DIGI LABS is released as a **Source-Available Free Application**:
 - **DIGIFORMATION LTD Corporate Website:** [https://www.digiformation.co.uk/](https://www.digiformation.co.uk/)
 - **Digi Biz OS Web Portal & Docs:** [https://www.digibizos.co.uk/open-source/digi-labs](https://www.digibizos.co.uk/open-source/digi-labs)
 - **Official Linktree (All Verified Channels):** [https://linktr.ee/digiformationltd](https://linktr.ee/digiformationltd)
+- **Free Open Source Softwares Hub (15+ Tools):** [https://www.digibizos.co.uk/open-source](https://www.digibizos.co.uk/open-source)
 - **Bug Reports & Feature Requests:** Feel free to open an Issue or Pull Request on GitHub.
 
 <p align="center">
