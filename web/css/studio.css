@@ -139,7 +139,7 @@ body {
 
 /* ── Tabs ───────────────────────────────────────────────────────────────── */
 
-.tabs, .status-pill, .win-controls, .brand-mark { -webkit-app-region: no-drag; }
+.tabs, .status-pill, .win-controls, .brand-mark, .try-digibiz-btn, .digibiz-aside-card, .appfoot-cta { -webkit-app-region: no-drag; }
 .tabs { display: flex; gap: 4px; padding: 4px; background: var(--badge-bg); border-radius: var(--r-md); border: 1px solid var(--glass-border); }
 .tab {
   appearance: none; border: 0; cursor: pointer;
@@ -150,6 +150,75 @@ body {
 }
 .tab:hover { color: var(--text-primary); }
 .tab[aria-selected="true"] { background: var(--badge-cyan); color: var(--accent-cyan); }
+
+/* ── Try DIGI BIZ OS Buttons ────────────────────────────────────────────── */
+
+.try-digibiz-btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 6px 13px; border-radius: 999px;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.16), rgba(47, 224, 200, 0.18));
+  border: 1px solid rgba(47, 224, 200, 0.45);
+  color: #fff; text-decoration: none;
+  font-size: 11.5px; font-weight: 700;
+  letter-spacing: 0.02em;
+  box-shadow: 0 0 16px -2px rgba(47, 224, 200, 0.3);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer; white-space: nowrap;
+}
+.try-digibiz-btn:hover {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.28), rgba(47, 224, 200, 0.32));
+  border-color: rgba(47, 224, 200, 0.85);
+  box-shadow: 0 0 24px 2px rgba(47, 224, 200, 0.5);
+  transform: translateY(-1px);
+  color: #fff;
+}
+.try-digibiz-btn .btn-sparkle { color: #2fe0c8; font-size: 12px; }
+.try-digibiz-btn .btn-tag {
+  font-family: var(--font-mono); font-size: 9.5px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  background: rgba(16, 185, 129, 0.25); color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  padding: 1.5px 6.5px; border-radius: 999px;
+}
+
+.digibiz-aside-card {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 12px 14px;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(47, 224, 200, 0.08));
+  border: 1px solid rgba(47, 224, 200, 0.3);
+  border-radius: var(--r-md);
+  margin-top: 12px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.digibiz-aside-card:hover {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(47, 224, 200, 0.16));
+  border-color: rgba(47, 224, 200, 0.6);
+  box-shadow: 0 0 20px rgba(47, 224, 200, 0.25);
+  transform: translateY(-1px);
+}
+.aside-card-tag {
+  font-size: 10px; font-weight: 700; color: #2fe0c8;
+  letter-spacing: 0.06em; text-transform: uppercase; font-family: var(--font-mono);
+}
+.aside-card-title { font-size: 13px; font-weight: 700; color: #fff; margin-top: 2px; }
+.aside-card-sub { font-size: 10.5px; color: #94a3b8; margin-top: 2px; }
+.aside-card-btn {
+  font-size: 11px; font-weight: 700; color: #2fe0c8;
+  background: rgba(47, 224, 200, 0.15); border: 1px solid rgba(47, 224, 200, 0.4);
+  padding: 4px 9px; border-radius: 6px; white-space: nowrap;
+}
+
+.appfoot-cta {
+  color: #34d399 !important;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+.appfoot-cta:hover {
+  color: #6ee7b7 !important;
+  text-decoration: underline;
+}
 
 /* ── Layout ─────────────────────────────────────────────────────────────── */
 

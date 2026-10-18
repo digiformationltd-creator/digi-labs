@@ -356,6 +356,15 @@ const Studio = (() => {
     });
     $("kbAdd") && $("kbAdd").addEventListener("click", () => switchView("settings"));
 
+    // Open Try DIGI BIZ OS pricing & trial portal
+    const openDigiBizPricing = (e) => {
+      e && e.preventDefault();
+      const url = "https://www.digibizos.co.uk/pricing";
+      if (win.openExternal) win.openExternal(url); else window.open(url, "_blank");
+    };
+    $("tryDigiBizBtn") && $("tryDigiBizBtn").addEventListener("click", openDigiBizPricing);
+    $("tryDigiBizAside") && $("tryDigiBizAside").addEventListener("click", openDigiBizPricing);
+
     for (const t of document.querySelectorAll(".tab")) {
       t.addEventListener("click", () => switchView(t.dataset.view));
     }

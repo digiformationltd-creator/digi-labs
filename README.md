@@ -12,11 +12,19 @@
   <a href="https://www.digibizos.co.uk/open-source/digi-labs">
     <img src="https://img.shields.io/badge/Portable-ZIP_Build_(358MB)-a855f7?style=for-the-badge&logo=windows&logoColor=white" alt="Download Portable ZIP via Official Portal" />
   </a>
+  <a href="https://www.digibizos.co.uk/pricing">
+    <img src="https://img.shields.io/badge/🚀_Try_DIGI_BIZ_OS-3--Day_Free_Trial-10b981?style=for-the-badge&logo=windows&logoColor=white" alt="Try DIGI BIZ OS 3-Day Free Trial" />
+  </a>
   <a href="https://www.digibizos.co.uk/open-source/digi-labs">
     <img src="https://img.shields.io/badge/Web_Portal-Documentation-7928ca?style=for-the-badge" alt="Portal & Docs" />
   </a>
   <img src="https://img.shields.io/badge/License-Source--Available-blue?style=for-the-badge" alt="License" />
 </p>
+
+> 🌟 **EXPERIENCE OUR FLAGSHIP DESKTOP PLATFORM: DIGI BIZ OS**  
+> DIGI LABS is engineered and powered by **DIGI BIZ OS** — our sovereign AI business operating system for Windows. Replace recurring SaaS costs with native offline CRM, WhatsApp marketing automation, autonomous coding agents, market intelligence, and local voice AI.  
+>  
+> 👉 **[✨ Try DIGI BIZ OS — Claim Your 3-Day Free Trial (or £29 Lifetime)](https://www.digibizos.co.uk/pricing)**
 
 ---
 
@@ -162,6 +170,7 @@ DIGI LABS is released as a **Source-Available Free Application**:
 - **DIGIFORMATION LTD Corporate Website:** [https://www.digiformation.co.uk/](https://www.digiformation.co.uk/)
 - **Digi Biz OS Web Portal & Docs:** [https://www.digibizos.co.uk/open-source/digi-labs](https://www.digibizos.co.uk/open-source/digi-labs)
 - **Official Linktree (All Verified Channels):** [https://linktr.ee/digiformationltd](https://linktr.ee/digiformationltd)
+- **Try DIGI BIZ OS (3-Day Free Trial & Pricing):** [https://www.digibizos.co.uk/pricing](https://www.digibizos.co.uk/pricing)
 - **Bug Reports & Feature Requests:** Feel free to open an Issue or Pull Request on GitHub.
 
 <p align="center">
