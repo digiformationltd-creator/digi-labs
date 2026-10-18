@@ -364,6 +364,7 @@ const Studio = (() => {
     };
     $("tryDigiBizBtn") && $("tryDigiBizBtn").addEventListener("click", openDigiBizPricing);
     $("tryDigiBizAside") && $("tryDigiBizAside").addEventListener("click", openDigiBizPricing);
+    $("tryDigiBizMainBtn") && $("tryDigiBizMainBtn").addEventListener("click", openDigiBizPricing);
 
     for (const t of document.querySelectorAll(".tab")) {
       t.addEventListener("click", () => switchView(t.dataset.view));
