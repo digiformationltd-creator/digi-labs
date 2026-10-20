@@ -28,6 +28,22 @@
 
 ---
 
+
+---
+
+## 📥 Downloads & Official Releases
+
+All verified production installers are hosted and distributed through the official DIGI BIZ OS Open-Source Portal:
+
+### ⚡ 1-Click Official Windows Installer (Recommended)
+👉 **[🚀 Download DIGI LABS Setup (.exe 253MB)](https://www.digibizos.co.uk/open-source/digi-labs)** — Standalone 1-click Windows installer with embedded FFmpeg, Google Gemini 2.5 Flash Studio Voice, and automatic desktop shortcuts.
+
+💼 **[Download Portable ZIP Edition (358MB)](https://www.digibizos.co.uk/open-source/digi-labs)**
+
+🌐 **[Explore all Open-Source Tools on DIGI BIZ OS](https://www.digibizos.co.uk/open-source)**
+
+---
+
 ## 🎯 Who Is DIGI LABS Built For?
 
 DIGI LABS is engineered specifically for creators, businesses, and educators who need authentic human audio without the punishing $22–$99/month subscription fees and character caps of commercial TTS platforms:
