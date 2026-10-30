@@ -1,16 +1,11 @@
 /**
  * The studio itself — state, events, and the one polling loop.
  *
- * Two decisions worth stating:
- *
- *   The engine list is built from what the SERVER says is ready, never from a
- *   hardcoded list. An engine whose key is missing arrives disabled with the
- *   reason attached, so the person is told what to do instead of discovering it
- *   when Generate fails.
- *
- *   Generation polls a job rather than holding a request open. A chapter takes
- *   minutes, and the stage name ("Speaking 4 of 11") is the difference between
- *   waiting and wondering whether it has hung.
+ * Multilingual TTS Architecture:
+ * - Studio Voice (Gemini): Multilingual studio character profiles (Charon, Puck, Fenrir, Orus).
+ * - Free Voice (Edge-TTS): 140+ global languages & dialects, 320+ natural neural voices.
+ * - Dynamic language & locale selector with automatic RTL Nastaliq typography toggle.
+ * - Generation polls a job rather than holding a request open.
  */
 const Studio = (() => {
   const $ = (id) => document.getElementById(id);
@@ -18,6 +13,8 @@ const Studio = (() => {
   const state = {
     engines: [],
     engineId: null,
+    locales: [],
+    locale: "ur-PK",
     voice: "",
     style: "",
     speed: 1,
@@ -25,8 +22,29 @@ const Studio = (() => {
     polling: null,
   };
 
-  const SAMPLE = "DigiFormation Ltd builds software that does the quiet work: the reports nobody wants to write, the follow-ups nobody remembers to send, and the paperwork that keeps a company compliant. This clip was produced in Digi Labs.";
-  const SAMPLE_UR = "ڈیجی فارمیشن لمیٹڈ وہ سافٹ ویئر بناتا ہے جو خاموشی سے کام کرتا ہے۔ یہ آواز ڈیجی وائس اسٹوڈیو میں تیار کی گئی ہے۔";
+  const SAMPLES = {
+    "ur-PK": "ڈیجی فارمیشن لمیٹڈ وہ سافٹ ویئر بناتا ہے جو خاموشی سے کام کرتا ہے۔ یہ آواز ڈیجی لیبز اسٹوڈیو میں تیار کی گئی ہے۔",
+    "ur-IN": "ڈیجی فارمیشن لمیٹڈ وہ سافٹ ویئر بناتا ہے جو خاموشی سے کام کرتا ہے۔ یہ آواز ڈیجی لیبز اسٹوڈیو میں تیار کی گئی ہے۔",
+    "hi-IN": "डिजी फॉर्मेशन ऐसा सॉफ्टवेयर बनाती है जो सहजता से काम करता है। यह ऑडियो क्लिप डिजी लैब्स स्टूडियो में तैयार की गई है।",
+    "ar-SA": "تصنع ديجي فورميشن برمجيات تنجز العمل بهدوء وموثوقية. تم إنتاج هذا المقطع الصوتي في ديجي لابس استوديو.",
+    "ar-AE": "تصنع ديجي فورميشن برمجيات تنجز العمل بهدوء وموثوقية. تم إنتاج هذا المقطع الصوتي في ديجي لابس استوديو.",
+    "es-ES": "DigiFormation Ltd crea software que realiza el trabajo silencioso de su empresa. Este audio fue producido en DIGI LABS Studio.",
+    "fr-FR": "DigiFormation Ltd crée des logiciels qui accomplissent le travail en toute discrétion. Ce clip a été produit dans DIGI LABS Studio.",
+    "de-DE": "DigiFormation Ltd entwickelt Software, die im Hintergrund zuverlässig arbeitet. Dieser Audioclip wurde in DIGI LABS Studio erstellt.",
+    "zh-CN": "数码实验室多语言智能语音生成平台。这段音频由 DIGI LABS Studio 制作生成。",
+    "ja-JP": "DigiFormation Ltd は業務を円滑に進めるソフトウェアを開発しています。この音声は DIGI LABS Studio で作成されました。",
+    "ko-KR": "디지포메이션은 비즈니스를 지원하는 최적의 소프트웨어를 만듭니다. 이 음성은 DIGI LABS Studio에서 제작되었습니다.",
+    "pt-BR": "A DigiFormation Ltd desenvolve software inteligente para o seu negócio. Este áudio foi produzido no DIGI LABS Studio.",
+    "it-IT": "DigiFormation Ltd crea software che semplifica il lavoro aziendale. Questo audio è stato prodotto in DIGI LABS Studio.",
+    "tr-TR": "DigiFormation Ltd işinizi büyüten akıllı yazılımlar üretir. Bu ses kaydı DIGI LABS Studio ile oluşturulmuştur.",
+    "ru-RU": "DigiFormation Ltd создает программное обеспечение для автоматизации бизнеса. Этот клип был создан в DIGI LABS Studio.",
+    "bn-BD": "ডিজি ফরমেশন এমন সফটওয়্যার তৈরি করে যা ব্যবসার কাজ সহজ করে। এই অডিওটি ডিজি ল্যাবস স্টুডিওতে তৈরি।",
+    "fa-IR": "دیجی فورمیشن نرم افزارهایی برای اتوماسیون کسب و کار می‌سازد. این کلیپ صوتی در دیجی لبز تولید شده است.",
+    "id-ID": "DigiFormation Ltd menciptakan perangkat lunak pintar untuk bisnis Anda. Audio ini diproduksi di DIGI LABS Studio.",
+    "vi-VN": "DigiFormation Ltd phát triển phần mềm thông minh hỗ trợ doanh nghiệp. Bản ghi âm này được tạo trong DIGI LABS Studio.",
+    "th-TH": "DigiFormation Ltd สร้างซอฟต์แวร์อัจฉริยะสำหรับธุรกิจของคุณ คลิปเสียงนี้สร้างขึ้นใน DIGI LABS Studio",
+    default: "DigiFormation Ltd builds software that does the quiet work: the reports nobody wants to write, the follow-ups nobody remembers to send, and the paperwork that keeps a company compliant. This clip was produced in DIGI LABS Studio."
+  };
 
   // ── Toasts ────────────────────────────────────────────────────────────────
   function toast(message, kind) {
@@ -46,10 +64,7 @@ const Studio = (() => {
       text.textContent = h.gemini_keys
         ? `Studio online · ${h.gemini_keys} key${h.gemini_keys === 1 ? "" : "s"}`
         : "Studio online";
-      // No plumbing names here either — just the product line.
-      $("aboutText").textContent = `DIGI LABS ${h.version} · DigiFormation Ltd`;
-      // No Gemini key → show the banner so Studio Voice has an obvious way in.
-      // Free Voice still works, so this is an invitation, not a block.
+      if ($("aboutText")) $("aboutText").textContent = `DIGI LABS ${h.version} · DigiFormation Ltd`;
       $("keyBanner").classList.toggle("on", !h.gemini_keys);
     } catch {
       pill.className = "status-pill offline";
@@ -57,13 +72,24 @@ const Studio = (() => {
     }
   }
 
-  // ── Engines ───────────────────────────────────────────────────────────────
+  // ── Engines & Locales ─────────────────────────────────────────────────────
   async function loadEngines() {
     let data;
     try { data = await API.engines(); }
     catch (e) { toast(e.message, "err"); return; }
 
     state.engines = data.engines || [];
+
+    try {
+      const lData = await API.languages();
+      state.locales = lData.locales || [];
+    } catch {
+      const freeEng = state.engines.find((e) => e.id === "free");
+      state.locales = (freeEng && freeEng.locales) || [];
+    }
+
+    renderLocales();
+
     const list = $("engineList");
     list.innerHTML = "";
 
@@ -94,13 +120,46 @@ const Studio = (() => {
       list.appendChild(b);
     }
 
-    // Open on the first engine that can actually run, not simply the first one.
+    // Open on the first engine that can actually run
     const firstReady = state.engines.find((e) => e.ready);
     if (firstReady) selectEngine(firstReady.id);
     else {
       $("generateBtn").disabled = true;
       toast("No voice engine is ready yet — open Settings.", "err");
     }
+  }
+
+  function renderLocales() {
+    const sel = $("langSelect");
+    if (!sel) return;
+    const previous = state.locale || sel.value;
+    sel.innerHTML = "";
+
+    for (const loc of state.locales) {
+      const opt = document.createElement("option");
+      opt.value = loc.code;
+      opt.textContent = `${loc.label} (${loc.voices.length} voice${loc.voices.length === 1 ? "" : "s"})`;
+      if (loc.rtl) opt.dataset.rtl = "true";
+      sel.appendChild(opt);
+    }
+
+    if (previous && state.locales.some((l) => l.code === previous)) {
+      sel.value = previous;
+      state.locale = previous;
+    } else if (state.locales.length) {
+      state.locale = state.locales[0].code;
+      sel.value = state.locale;
+    }
+
+    applyLocaleDirection();
+  }
+
+  function applyLocaleDirection() {
+    const loc = state.locales.find((l) => l.code === state.locale);
+    const isRtl = !!(loc && loc.rtl);
+    state.rtl = isRtl;
+    $("textEditor").classList.toggle("rtl", isRtl);
+    $("urduToggle").setAttribute("aria-pressed", String(isRtl));
   }
 
   function selectEngine(id) {
@@ -112,24 +171,10 @@ const Studio = (() => {
       b.setAttribute("aria-pressed", String(b.dataset.id === id));
     }
 
-    const voice = $("voiceSelect");
-    voice.innerHTML = "";
-    for (const v of engine.voices || []) {
-      const o = document.createElement("option");
-      o.value = v.id; o.textContent = v.label;
-      voice.appendChild(o);
-    }
-    // An Urdu body of text should not default to an English voice.
-    if (state.rtl) {
-      const ur = (engine.voices || []).find((v) => v.lang === "ur");
-      if (ur) voice.value = ur.id;
-    }
-    state.voice = voice.value;
+    updateVoicesForEngine();
 
     const style = $("styleSelect");
     style.innerHTML = "";
-    // Styles now arrive as {id, label}; the first one (Normal / Natural) is the
-    // default, which is the plain voice rather than an advert read.
     for (const s of engine.styles || []) {
       const o = document.createElement("option");
       o.value = typeof s === "string" ? s : s.id;
@@ -138,12 +183,65 @@ const Studio = (() => {
     }
     state.style = style.value;
 
-    // Only the free engine takes a speed; sending one to Gemini would be ignored
-    // silently, so the control is disabled rather than lying.
     const speedOn = id === "free";
     $("speedSlider").disabled = !speedOn;
     $("speedReset").disabled = !speedOn;
-    $("generateBtn").disabled = false;
+  }
+
+  function updateVoicesForEngine() {
+    const engine = state.engines.find((e) => e.id === state.engineId);
+    if (!engine) return;
+
+    const voice = $("voiceSelect");
+    const hint = $("voiceHint");
+    voice.innerHTML = "";
+
+    const currentLoc = state.locales.find((l) => l.code === state.locale);
+
+    if (state.engineId === "studio") {
+      // Gemini Studio Voice: Universal Multilingual generative audio
+      for (const v of engine.voices || []) {
+        const o = document.createElement("option");
+        o.value = v.id;
+        o.textContent = `${v.label} (Studio Multilingual)`;
+        voice.appendChild(o);
+      }
+      if (hint) {
+        hint.style.display = "block";
+        hint.textContent = `⚡ Gemini 2.5 Studio: Speaks ${currentLoc ? currentLoc.label : "selected language"} with high-fidelity studio inflection.`;
+      }
+      $("generateBtn").disabled = false;
+    } else {
+      // Free Voice (Edge-TTS): Exact matching neural voices
+      const compatibleVoices = (currentLoc && currentLoc.voices) || [];
+      if (compatibleVoices.length > 0) {
+        for (const v of compatibleVoices) {
+          const o = document.createElement("option");
+          o.value = v.id;
+          o.textContent = v.label;
+          voice.appendChild(o);
+        }
+        if (hint) {
+          hint.style.display = "block";
+          hint.textContent = `🎙️ Free Voice: ${compatibleVoices.length} native neural voice(s) for ${currentLoc.label}.`;
+        }
+        $("generateBtn").disabled = false;
+      } else {
+        const o = document.createElement("option");
+        o.value = "";
+        o.disabled = true;
+        o.selected = true;
+        o.textContent = `No Free Voice available for ${currentLoc ? currentLoc.label : "this language"}`;
+        voice.appendChild(o);
+        if (hint) {
+          hint.style.display = "block";
+          hint.textContent = `⚠️ No Free Voice for this dialect. Switch to Studio Voice for universal multilingual synthesis.`;
+        }
+        $("generateBtn").disabled = true;
+      }
+    }
+
+    state.voice = voice.value;
   }
 
   // ── Editor ────────────────────────────────────────────────────────────────
@@ -158,14 +256,12 @@ const Studio = (() => {
     const text = $("textEditor").value.trim();
     if (!text) { toast("Type or paste some text first."); return; }
     if (!state.engineId) { toast("Pick a voice engine first."); return; }
+    if (!state.voice) { toast("Select a valid voice first."); return; }
 
     const btn = $("generateBtn");
     btn.disabled = true;
     showProgress("Queued", 0);
     $("resultPanel").classList.remove("on");
-
-    const engine = state.engines.find((e) => e.id === state.engineId);
-    const voiceMeta = (engine.voices || []).find((v) => v.id === state.voice);
 
     let job;
     try {
@@ -173,7 +269,7 @@ const Studio = (() => {
         engine: state.engineId,
         text,
         voice: state.voice,
-        language: (voiceMeta && voiceMeta.lang) || (state.rtl ? "ur" : "en"),
+        language: state.locale || (state.rtl ? "ur-PK" : "en-US"),
         style: state.style,
         speed: state.speed,
       });
@@ -203,7 +299,7 @@ const Studio = (() => {
         await showResult(j);
         toast("Voice ready.", "ok");
         loadHistory();
-        loadEngines();                 // the quota moved
+        loadEngines();
       } else if (j.status === "error") {
         clearInterval(state.polling);
         hideProgress();
@@ -238,7 +334,7 @@ const Studio = (() => {
     const box = $("historyList");
     let items = [];
     try { items = (await API.history()).items || []; }
-    catch { /* an empty history and an unreachable one look the same to the person */ }
+    catch { /* an empty history and an unreachable one look the same */ }
 
     if (!items.length) {
       box.innerHTML =
@@ -259,7 +355,6 @@ const Studio = (() => {
            <div class="hist-meta">${it.engine_display_name} · ${it.voice || "—"} · ${it.duration_seconds || "?"}s · ${new Date(it.created_at).toLocaleString()}</div>
          </div>
          <button class="btn btn-ghost btn-sm" data-act="del">Delete</button>`;
-      // textContent, not innerHTML: this string came from whatever was typed.
       row.querySelector(".hist-text").textContent = it.text;
 
       row.querySelector(".play-btn").addEventListener("click", async () => {
@@ -292,8 +387,6 @@ const Studio = (() => {
     s.slots.forEach((slot, i) => {
       const row = document.createElement("div");
       row.className = "slot";
-      // A friendly label, not the raw env-var name — the customer sees
-      // "Gemini key 1", never GEMINI_API_KEY_1.
       row.innerHTML =
         `<span class="slot-name">Gemini key ${i + 1}</span>
          <div class="grow"><input type="password" placeholder="${slot.filled ? "•••••••• saved" : "paste a key"}"></div>
@@ -320,10 +413,6 @@ const Studio = (() => {
 
       box.appendChild(row);
     });
-    // The engine paths (Python, FFmpeg, voice package) are deliberately NOT
-    // shown — a customer never needs the plumbing, and naming it only invites
-    // confusion. If an engine is missing, the relevant tab says so in plain
-    // words at the point of use instead.
   }
 
   // ── Views ─────────────────────────────────────────────────────────────────
@@ -343,20 +432,20 @@ const Studio = (() => {
     Wave.attach($("wave"));
     Player.attach({ play: $("playBtn"), seek: $("seek"), time: $("timeLabel") });
 
-    // Window controls — only present in the desktop shell.
+    // Window controls
     const win = window.studio || {};
     $("wcMin") && $("wcMin").addEventListener("click", () => win.minimize && win.minimize());
     $("wcMax") && $("wcMax").addEventListener("click", () => win.maximize && win.maximize());
     $("wcClose") && $("wcClose").addEventListener("click", () => win.close && win.close());
 
-    // The key banner's two buttons: open Google AI Studio, or jump to Settings.
+    // Key banner buttons
     $("kbGet") && $("kbGet").addEventListener("click", () => {
       const url = "https://aistudio.google.com/apikey";
       if (win.openExternal) win.openExternal(url); else window.open(url, "_blank");
     });
     $("kbAdd") && $("kbAdd").addEventListener("click", () => switchView("settings"));
 
-    // Open Try DIGI BIZ OS pricing & trial portal
+    // DIGI BIZ OS CTA buttons
     const openDigiBizPricing = (e) => {
       e && e.preventDefault();
       const url = "https://www.digibizos.co.uk/pricing";
@@ -370,7 +459,6 @@ const Studio = (() => {
       t.addEventListener("click", () => switchView(t.dataset.view));
     }
 
-    // External link delegation for desktop shell
     document.addEventListener("click", (e) => {
       const link = e.target.closest('a[href^="http"], a[href^="https"], a[href^="mailto"]');
       if (link && win.openExternal) {
@@ -381,8 +469,12 @@ const Studio = (() => {
 
     $("textEditor").addEventListener("input", counts);
     $("clearBtn").addEventListener("click", () => { $("textEditor").value = ""; counts(); });
+
     $("sampleBtn").addEventListener("click", () => {
-      $("textEditor").value = state.rtl ? SAMPLE_UR : SAMPLE;
+      const sample = SAMPLES[state.locale] ||
+                     SAMPLES[state.locale?.split("-")[0]] ||
+                     (state.rtl ? SAMPLES["ur-PK"] : SAMPLES.default);
+      $("textEditor").value = sample;
       counts();
     });
 
@@ -390,7 +482,12 @@ const Studio = (() => {
       state.rtl = !state.rtl;
       e.currentTarget.setAttribute("aria-pressed", String(state.rtl));
       $("textEditor").classList.toggle("rtl", state.rtl);
-      if (state.engineId) selectEngine(state.engineId);   // re-pick a matching voice
+    });
+
+    $("langSelect").addEventListener("change", (e) => {
+      state.locale = e.target.value;
+      applyLocaleDirection();
+      updateVoicesForEngine();
     });
 
     $("voiceSelect").addEventListener("change", (e) => { state.voice = e.target.value; });
@@ -440,8 +537,6 @@ const Studio = (() => {
 
   const fileToDataUrl = (file) => blobToDataUrl(file);
 
-  /** Save any clip the studio holds. Uses the desktop Save dialog where there
-   *  is one; a browser only gets the download link. */
   async function saveAudioFrom(url, name) {
     if (window.studio && window.studio.saveAudio) {
       const dataUrl = await fetch(url).then((r) => r.blob()).then(blobToDataUrl);

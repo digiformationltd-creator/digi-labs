@@ -1,9 +1,7 @@
 node_modules/
 release/
 /engines/
-data/audio/
-data/uploads/
-data/.env
+data/
 .env
 .DS_Store
 Thumbs.db

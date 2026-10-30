@@ -16,20 +16,11 @@ const fs = require("node:fs");
 const os = require("node:os");
 const path = require("node:path");
 const { spawn } = require("node:child_process");
+const catalog = require("./voices-catalog");
 
-// Urdu first, because that is what this studio is mostly for.
-const VOICES = [
-  { id: "ur-PK-AsadNeural", label: "Asad — Urdu (Pakistan)", lang: "ur" },
-  { id: "hi-IN-MadhurNeural", label: "Madhur — Hindi (India)", lang: "hi" },
-  { id: "en-US-AndrewMultilingualNeural", label: "Andrew — English (multilingual)", lang: "en" },
-  { id: "en-US-BrianMultilingualNeural", label: "Brian — English (multilingual)", lang: "en" },
-  { id: "en-GB-RyanNeural", label: "Ryan — English (UK)", lang: "en" },
-  { id: "en-US-GuyNeural", label: "Guy — English (US)", lang: "en" },
-  { id: "ar-SA-HamedNeural", label: "Hamed — Arabic", lang: "ar" },
-];
+const VOICES = catalog.ALL_VOICES;
 
-// Delivery presets. Each one moves rate, pitch and volume together, for the
-// reason in the header.
+// Delivery presets. Each one moves rate, pitch and volume together.
 const STYLES = {
   natural: { rate: "", pitch: "", volume: "" },
   promo: { rate: "+18%", pitch: "+30Hz", volume: "+12%" },
@@ -38,11 +29,21 @@ const STYLES = {
   calm: { rate: "-14%", pitch: "-20Hz", volume: "-4%" },
 };
 
-function voiceFor(id, lang) {
-  const hit = VOICES.find((v) => v.id === id);
-  if (hit) return hit.id;
-  const byLang = VOICES.find((v) => v.lang === String(lang || "").slice(0, 2));
-  return (byLang || VOICES[0]).id;
+const STYLE_LABELS = {
+  natural: "Natural — standard cadence",
+  business: "Business — confident & clear",
+  promo: "Promo — energetic & punchy",
+  explainer: "Explainer — friendly & unhurried",
+  calm: "Calm — slow narration",
+};
+
+function voiceFor(id, lang, locale) {
+  if (id) {
+    const hit = catalog.findVoice(id);
+    if (hit) return hit.id;
+  }
+  const fallback = catalog.defaultVoiceFor(locale || lang, lang);
+  return fallback ? fallback.id : "ur-PK-AsadNeural";
 }
 
 /**
@@ -54,7 +55,7 @@ async function speak({ text, voice, lang, style, speed, python }) {
   if (!body) throw new Error("No text supplied.");
   if (!python) throw new Error("The studio's Python is not installed yet. Open Settings and run the one-click setup.");
 
-  const pick = voiceFor(voice, lang);
+  const pick = voiceFor(voice, lang, lang);
   const preset = STYLES[String(style || "").trim()] || STYLES.natural;
 
   // An explicit speed from the slider wins over the preset's rate: the person
@@ -99,16 +100,15 @@ async function speak({ text, voice, lang, style, speed, python }) {
   }
 }
 
-const STYLE_LABELS = {
-  natural: "Natural — plain read",
-  business: "Business — confident",
-  promo: "Promo — fast & punchy",
-  explainer: "Explainer — clear",
-  calm: "Calm — slow narration",
-};
-
 function styleList() {
   return Object.keys(STYLES).map((id) => ({ id, label: STYLE_LABELS[id] || id }));
 }
 
-module.exports = { speak, VOICES, STYLES, styleList };
+module.exports = {
+  speak,
+  VOICES,
+  STYLES,
+  styleList,
+  catalog,
+  voiceFor,
+};

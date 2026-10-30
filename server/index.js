@@ -18,6 +18,7 @@ const path = require("node:path");
 const { spawn, execFileSync } = require("node:child_process");
 
 const gemini = require("./engines/gemini-tts");
+const edge = require("./engines/edge-tts");
 const fx = require("./engines/audio-fx");
 const stt = require("./engines/transcribe");
 const jobsStore = require("./jobs");
@@ -97,7 +98,7 @@ app.get("/api/health", (_req, res) => {
     python: !!python(),
     ffmpeg: !!ffmpeg(),
     gemini_keys: gemini.keyCount(),
-    edge_ready: false,
+    edge_ready: !!python(),
   });
 });
 
@@ -125,9 +126,29 @@ app.get("/api/engines", (_req, res) => {
         voices: gemini.VOICES,
         styles: gemini.styleList(),
         quota: q,
-        best_for: "Short, polished pieces — adverts, intros, product lines. Male voices only.",
+        best_for: "Short, polished pieces — adverts, intros, brand voiceovers. Multilingual studio voices.",
+      },
+      {
+        id: "free",
+        name: "Free Voice",
+        subtitle: "Edge-TTS · unlimited & multilingual",
+        kind: "local",
+        ready: !!py,
+        reason: !py ? "Python is missing — required for Free Voice." : "",
+        voices: edge.VOICES,
+        locales: edge.catalog.getLocales(),
+        styles: edge.styleList(),
+        quota: null,
+        best_for: "Unlimited long-form narration, audiobooks, and 140+ global languages & dialects.",
       },
     ],
+  });
+});
+
+app.get("/api/languages", (_req, res) => {
+  res.json({
+    ok: true,
+    locales: edge.catalog.getLocales(),
   });
 });
 
@@ -141,13 +162,13 @@ app.post("/api/generate", (req, res) => {
   const text = String(req.body && req.body.text || "").trim();
   const engineId = String(req.body && req.body.engine || "studio");
   if (!text) return res.status(400).json({ ok: false, message: "Type or paste some text first." });
-  if (!["studio"].includes(engineId)) {
+  if (!["studio", "free"].includes(engineId)) {
     return res.status(400).json({ ok: false, message: `Unknown engine "${engineId}".` });
   }
 
   const job = jobsStore.create({
     engine: engineId,
-    engineName: "Studio Voice (Gemini)",
+    engineName: engineId === "studio" ? "Studio Voice (Gemini)" : "Free Voice (Edge-TTS)",
     text,
     voice: String(req.body.voice || ""),
     language: String(req.body.language || ""),
@@ -164,6 +185,24 @@ app.post("/api/generate", (req, res) => {
 async function run(job) {
   const id = job.job_id;
   try {
+    if (job.engine === "free") {
+      const py = python();
+      if (!py) throw new Error("Python is missing — required for Free Voice.");
+      jobsStore.stage(id, "Speaking with Free Voice", 30);
+      const out = await edge.speak({
+        text: job.text,
+        voice: job.voice,
+        lang: job.language,
+        style: job.style,
+        speed: job.speed,
+        python: py,
+      });
+      job.voice = out.voice;
+      jobsStore.stage(id, "Finalizing audio", 90);
+      jobsStore.finish(id, out.buffer, AUDIO);
+      return;
+    }
+
     // Studio engine. Gemini accepts 8,000 characters per request, but a chunk
     // that large produces minutes of audio in one call and overruns the 120s
     // request timeout — measured: 1,500 chars is ~24s, so a 7,000-char chunk
@@ -197,16 +236,25 @@ async function run(job) {
   }
 }
 
-/** Split on sentence ends, never mid-word. Falls back to a hard cut only for a
- *  passage with no sentence breaks at all. */
+/** Split on sentence ends, never mid-word. Supports Unicode sentence terminators
+ *  for Latin, Urdu/Arabic, Indic, and CJK characters. Falls back to space or hard cut. */
 function splitForSpeech(text, limit) {
   if (text.length <= limit) return [text];
   const out = [];
   let rest = text;
   while (rest.length > limit) {
     const window = rest.slice(0, limit);
-    let cut = Math.max(window.lastIndexOf(". "), window.lastIndexOf("۔"),
-                       window.lastIndexOf("!"), window.lastIndexOf("?"), window.lastIndexOf("\n"));
+    let cut = Math.max(
+      window.lastIndexOf(". "),
+      window.lastIndexOf("۔"),
+      window.lastIndexOf("。"),
+      window.lastIndexOf("।"),
+      window.lastIndexOf("!"),
+      window.lastIndexOf("?"),
+      window.lastIndexOf("؟"),
+      window.lastIndexOf("؛"),
+      window.lastIndexOf("\n")
+    );
     if (cut < limit * 0.5) cut = window.lastIndexOf(" ");
     if (cut <= 0) cut = limit;
     out.push(rest.slice(0, cut + 1).trim());
@@ -415,7 +463,7 @@ app.get("/api/settings", (_req, res) => {
     slots: gemini.keySlots.map((n) => ({ name: n, filled: !!(process.env[n] || "").trim() })),
     python: python() || null,
     ffmpeg: ffmpeg() || null,
-    edge_ready: false,
+    edge_ready: !!python(),
   });
 });
 
