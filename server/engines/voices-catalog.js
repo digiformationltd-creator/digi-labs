@@ -1,7 +1,7 @@
 /**
  * Verified Multilingual Voices & Locales Catalog for DIGI LABS
- * Extracted from official Edge-TTS neural voice registry.
- * Total Locales: 142, Total Voices: 322
+ * Filtered to MALE VOICES ONLY per DIGI LABS production specification.
+ * Total Locales: 140, Total Male Voices: 159
  */
 
 const LOCALES = [
@@ -19,13 +19,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Asad (Male) — Friendly, Positive"
-      },
-      {
-        "id": "ur-PK-UzmaNeural",
-        "name": "Uzma",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Uzma (Female) — Friendly, Positive"
       }
     ]
   },
@@ -37,13 +30,6 @@ const LOCALES = [
     "label": "Urdu (India)",
     "rtl": true,
     "voices": [
-      {
-        "id": "ur-IN-GulNeural",
-        "name": "Gul",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Gul (Female) — Friendly, Positive"
-      },
       {
         "id": "ur-IN-SalmanNeural",
         "name": "Salman",
@@ -62,25 +48,11 @@ const LOCALES = [
     "rtl": false,
     "voices": [
       {
-        "id": "en-US-AvaNeural",
-        "name": "Ava",
-        "gender": "Female",
-        "personalities": "Expressive, Caring, Pleasant, Friendly",
-        "label": "Ava (Female) — Expressive, Caring, Pleasant, Friendly"
-      },
-      {
         "id": "en-US-AndrewNeural",
         "name": "Andrew",
         "gender": "Male",
         "personalities": "Warm, Confident, Authentic, Honest",
         "label": "Andrew (Male) — Warm, Confident, Authentic, Honest"
-      },
-      {
-        "id": "en-US-EmmaNeural",
-        "name": "Emma",
-        "gender": "Female",
-        "personalities": "Cheerful, Clear, Conversational",
-        "label": "Emma (Female) — Cheerful, Clear, Conversational"
       },
       {
         "id": "en-US-BrianNeural",
@@ -90,32 +62,11 @@ const LOCALES = [
         "label": "Brian (Male) — Approachable, Casual, Sincere"
       },
       {
-        "id": "en-US-AnaNeural",
-        "name": "Ana",
-        "gender": "Female",
-        "personalities": "Cute",
-        "label": "Ana (Female) — Cute"
-      },
-      {
         "id": "en-US-AndrewMultilingualNeural",
         "name": "AndrewMultilingual",
         "gender": "Male",
         "personalities": "Warm, Confident, Authentic, Honest",
         "label": "AndrewMultilingual (Male) — Warm, Confident, Authentic, Honest"
-      },
-      {
-        "id": "en-US-AriaNeural",
-        "name": "Aria",
-        "gender": "Female",
-        "personalities": "Positive, Confident",
-        "label": "Aria (Female) — Positive, Confident"
-      },
-      {
-        "id": "en-US-AvaMultilingualNeural",
-        "name": "AvaMultilingual",
-        "gender": "Female",
-        "personalities": "Expressive, Caring, Pleasant, Friendly",
-        "label": "AvaMultilingual (Female) — Expressive, Caring, Pleasant, Friendly"
       },
       {
         "id": "en-US-BrianMultilingualNeural",
@@ -132,13 +83,6 @@ const LOCALES = [
         "label": "Christopher (Male) — Reliable, Authority"
       },
       {
-        "id": "en-US-EmmaMultilingualNeural",
-        "name": "EmmaMultilingual",
-        "gender": "Female",
-        "personalities": "Cheerful, Clear, Conversational",
-        "label": "EmmaMultilingual (Female) — Cheerful, Clear, Conversational"
-      },
-      {
         "id": "en-US-EricNeural",
         "name": "Eric",
         "gender": "Male",
@@ -151,20 +95,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Passion",
         "label": "Guy (Male) — Passion"
-      },
-      {
-        "id": "en-US-JennyNeural",
-        "name": "Jenny",
-        "gender": "Female",
-        "personalities": "Friendly, Considerate, Comfort",
-        "label": "Jenny (Female) — Friendly, Considerate, Comfort"
-      },
-      {
-        "id": "en-US-MichelleNeural",
-        "name": "Michelle",
-        "gender": "Female",
-        "personalities": "Friendly, Pleasant",
-        "label": "Michelle (Female) — Friendly, Pleasant"
       },
       {
         "id": "en-US-RogerNeural",
@@ -191,32 +121,11 @@ const LOCALES = [
     "rtl": false,
     "voices": [
       {
-        "id": "en-GB-LibbyNeural",
-        "name": "Libby",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Libby (Female) — Friendly, Positive"
-      },
-      {
-        "id": "en-GB-MaisieNeural",
-        "name": "Maisie",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Maisie (Female) — Friendly, Positive"
-      },
-      {
         "id": "en-GB-RyanNeural",
         "name": "Ryan",
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Ryan (Male) — Friendly, Positive"
-      },
-      {
-        "id": "en-GB-SoniaNeural",
-        "name": "Sonia",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Sonia (Female) — Friendly, Positive"
       },
       {
         "id": "en-GB-ThomasNeural",
@@ -241,13 +150,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "WilliamMultilingual (Male) — Friendly, Positive"
-      },
-      {
-        "id": "en-AU-NatashaNeural",
-        "name": "Natasha",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Natasha (Female) — Friendly, Positive"
       }
     ]
   },
@@ -259,13 +161,6 @@ const LOCALES = [
     "label": "English (Canada)",
     "rtl": false,
     "voices": [
-      {
-        "id": "en-CA-ClaraNeural",
-        "name": "Clara",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Clara (Female) — Friendly, Positive"
-      },
       {
         "id": "en-CA-LiamNeural",
         "name": "Liam",
@@ -289,13 +184,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Madhur (Male) — Friendly, Positive"
-      },
-      {
-        "id": "hi-IN-SwaraNeural",
-        "name": "Swara",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Swara (Female) — Friendly, Positive"
       }
     ]
   },
@@ -313,13 +201,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Hamed (Male) — Friendly, Positive"
-      },
-      {
-        "id": "ar-SA-ZariyahNeural",
-        "name": "Zariyah",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Zariyah (Female) — Friendly, Positive"
       }
     ]
   },
@@ -331,13 +212,6 @@ const LOCALES = [
     "label": "Arabic (United Arab Emirates)",
     "rtl": true,
     "voices": [
-      {
-        "id": "ar-AE-FatimaNeural",
-        "name": "Fatima",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Fatima (Female) — Friendly, Positive"
-      },
       {
         "id": "ar-AE-HamdanNeural",
         "name": "Hamdan",
@@ -356,13 +230,6 @@ const LOCALES = [
     "rtl": true,
     "voices": [
       {
-        "id": "ar-EG-SalmaNeural",
-        "name": "Salma",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Salma (Female) — Friendly, Positive"
-      },
-      {
         "id": "ar-EG-ShakirNeural",
         "name": "Shakir",
         "gender": "Male",
@@ -380,25 +247,11 @@ const LOCALES = [
     "rtl": false,
     "voices": [
       {
-        "id": "es-ES-XimenaNeural",
-        "name": "Ximena",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Ximena (Female) — Friendly, Positive"
-      },
-      {
         "id": "es-ES-AlvaroNeural",
         "name": "Alvaro",
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Alvaro (Male) — Friendly, Positive"
-      },
-      {
-        "id": "es-ES-ElviraNeural",
-        "name": "Elvira",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Elvira (Female) — Friendly, Positive"
       }
     ]
   },
@@ -410,13 +263,6 @@ const LOCALES = [
     "label": "Spanish (Mexico)",
     "rtl": false,
     "voices": [
-      {
-        "id": "es-MX-DaliaNeural",
-        "name": "Dalia",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Dalia (Female) — Friendly, Positive"
-      },
       {
         "id": "es-MX-JorgeNeural",
         "name": "Jorge",
@@ -435,32 +281,11 @@ const LOCALES = [
     "rtl": false,
     "voices": [
       {
-        "id": "fr-FR-VivienneMultilingualNeural",
-        "name": "VivienneMultilingual",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "VivienneMultilingual (Female) — Friendly, Positive"
-      },
-      {
         "id": "fr-FR-RemyMultilingualNeural",
         "name": "RemyMultilingual",
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "RemyMultilingual (Male) — Friendly, Positive"
-      },
-      {
-        "id": "fr-FR-DeniseNeural",
-        "name": "Denise",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Denise (Female) — Friendly, Positive"
-      },
-      {
-        "id": "fr-FR-EloiseNeural",
-        "name": "Eloise",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Eloise (Female) — Friendly, Positive"
       },
       {
         "id": "fr-FR-HenriNeural",
@@ -499,13 +324,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Jean (Male) — Friendly, Positive"
-      },
-      {
-        "id": "fr-CA-SylvieNeural",
-        "name": "Sylvie",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Sylvie (Female) — Friendly, Positive"
       }
     ]
   },
@@ -518,13 +336,6 @@ const LOCALES = [
     "rtl": false,
     "voices": [
       {
-        "id": "de-DE-SeraphinaMultilingualNeural",
-        "name": "SeraphinaMultilingual",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "SeraphinaMultilingual (Female) — Friendly, Positive"
-      },
-      {
         "id": "de-DE-FlorianMultilingualNeural",
         "name": "FlorianMultilingual",
         "gender": "Male",
@@ -532,25 +343,11 @@ const LOCALES = [
         "label": "FlorianMultilingual (Male) — Friendly, Positive"
       },
       {
-        "id": "de-DE-AmalaNeural",
-        "name": "Amala",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Amala (Female) — Friendly, Positive"
-      },
-      {
         "id": "de-DE-ConradNeural",
         "name": "Conrad",
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Conrad (Male) — Friendly, Positive"
-      },
-      {
-        "id": "de-DE-KatjaNeural",
-        "name": "Katja",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Katja (Female) — Friendly, Positive"
       },
       {
         "id": "de-DE-KillianNeural",
@@ -570,25 +367,11 @@ const LOCALES = [
     "rtl": false,
     "voices": [
       {
-        "id": "pt-BR-ThalitaMultilingualNeural",
-        "name": "ThalitaMultilingual",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "ThalitaMultilingual (Female) — Friendly, Positive"
-      },
-      {
         "id": "pt-BR-AntonioNeural",
         "name": "Antonio",
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Antonio (Male) — Friendly, Positive"
-      },
-      {
-        "id": "pt-BR-FranciscaNeural",
-        "name": "Francisca",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Francisca (Female) — Friendly, Positive"
       }
     ]
   },
@@ -606,13 +389,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Duarte (Male) — Friendly, Positive"
-      },
-      {
-        "id": "pt-PT-RaquelNeural",
-        "name": "Raquel",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Raquel (Female) — Friendly, Positive"
       }
     ]
   },
@@ -637,20 +413,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Diego (Male) — Friendly, Positive"
-      },
-      {
-        "id": "it-IT-ElsaNeural",
-        "name": "Elsa",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Elsa (Female) — Friendly, Positive"
-      },
-      {
-        "id": "it-IT-IsabellaNeural",
-        "name": "Isabella",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Isabella (Female) — Friendly, Positive"
       }
     ]
   },
@@ -662,13 +424,6 @@ const LOCALES = [
     "label": "Turkish (Türkiye)",
     "rtl": false,
     "voices": [
-      {
-        "id": "tr-TR-EmelNeural",
-        "name": "Emel",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Emel (Female) — Friendly, Positive"
-      },
       {
         "id": "tr-TR-AhmetNeural",
         "name": "Ahmet",
@@ -686,20 +441,6 @@ const LOCALES = [
     "label": "Chinese (Mandarin, Simplified)",
     "rtl": false,
     "voices": [
-      {
-        "id": "zh-CN-XiaoxiaoNeural",
-        "name": "Xiaoxiao",
-        "gender": "Female",
-        "personalities": "Warm",
-        "label": "Xiaoxiao (Female) — Warm"
-      },
-      {
-        "id": "zh-CN-XiaoyiNeural",
-        "name": "Xiaoyi",
-        "gender": "Female",
-        "personalities": "Lively",
-        "label": "Xiaoyi (Female) — Lively"
-      },
       {
         "id": "zh-CN-YunjianNeural",
         "name": "Yunjian",
@@ -739,20 +480,6 @@ const LOCALES = [
     "rtl": false,
     "voices": [
       {
-        "id": "zh-HK-HiuGaaiNeural",
-        "name": "HiuGaai",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "HiuGaai (Female) — Friendly, Positive"
-      },
-      {
-        "id": "zh-HK-HiuMaanNeural",
-        "name": "HiuMaan",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "HiuMaan (Female) — Friendly, Positive"
-      },
-      {
         "id": "zh-HK-WanLungNeural",
         "name": "WanLung",
         "gender": "Male",
@@ -770,25 +497,11 @@ const LOCALES = [
     "rtl": false,
     "voices": [
       {
-        "id": "zh-TW-HsiaoChenNeural",
-        "name": "HsiaoChen",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "HsiaoChen (Female) — Friendly, Positive"
-      },
-      {
         "id": "zh-TW-YunJheNeural",
         "name": "YunJhe",
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "YunJhe (Male) — Friendly, Positive"
-      },
-      {
-        "id": "zh-TW-HsiaoYuNeural",
-        "name": "HsiaoYu",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "HsiaoYu (Female) — Friendly, Positive"
       }
     ]
   },
@@ -806,13 +519,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Keita (Male) — Friendly, Positive"
-      },
-      {
-        "id": "ja-JP-NanamiNeural",
-        "name": "Nanami",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Nanami (Female) — Friendly, Positive"
       }
     ]
   },
@@ -837,13 +543,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "InJoon (Male) — Friendly, Positive"
-      },
-      {
-        "id": "ko-KR-SunHiNeural",
-        "name": "SunHi",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "SunHi (Female) — Friendly, Positive"
       }
     ]
   },
@@ -861,13 +560,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Dmitry (Male) — Friendly, Positive"
-      },
-      {
-        "id": "ru-RU-SvetlanaNeural",
-        "name": "Svetlana",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Svetlana (Female) — Friendly, Positive"
       }
     ]
   },
@@ -879,13 +571,6 @@ const LOCALES = [
     "label": "Bangla (Bangladesh)",
     "rtl": false,
     "voices": [
-      {
-        "id": "bn-BD-NabanitaNeural",
-        "name": "Nabanita",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Nabanita (Female) — Friendly, Positive"
-      },
       {
         "id": "bn-BD-PradeepNeural",
         "name": "Pradeep",
@@ -909,13 +594,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Bashkar (Male) — Friendly, Positive"
-      },
-      {
-        "id": "bn-IN-TanishaaNeural",
-        "name": "Tanishaa",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Tanishaa (Female) — Friendly, Positive"
       }
     ]
   },
@@ -927,13 +605,6 @@ const LOCALES = [
     "label": "Persian (Iran)",
     "rtl": true,
     "voices": [
-      {
-        "id": "fa-IR-DilaraNeural",
-        "name": "Dilara",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Dilara (Female) — Friendly, Positive"
-      },
       {
         "id": "fa-IR-FaridNeural",
         "name": "Farid",
@@ -957,13 +628,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Ardi (Male) — Friendly, Positive"
-      },
-      {
-        "id": "id-ID-GadisNeural",
-        "name": "Gadis",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Gadis (Female) — Friendly, Positive"
       }
     ]
   },
@@ -975,13 +639,6 @@ const LOCALES = [
     "label": "Vietnamese (Vietnam)",
     "rtl": false,
     "voices": [
-      {
-        "id": "vi-VN-HoaiMyNeural",
-        "name": "HoaiMy",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "HoaiMy (Female) — Friendly, Positive"
-      },
       {
         "id": "vi-VN-NamMinhNeural",
         "name": "NamMinh",
@@ -1005,13 +662,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Niwat (Male) — Friendly, Positive"
-      },
-      {
-        "id": "th-TH-PremwadeeNeural",
-        "name": "Premwadee",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Premwadee (Female) — Friendly, Positive"
       }
     ]
   },
@@ -1023,13 +673,6 @@ const LOCALES = [
     "label": "Afrikaans (South Africa)",
     "rtl": false,
     "voices": [
-      {
-        "id": "af-ZA-AdriNeural",
-        "name": "Adri",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Adri (Female) — Friendly, Positive"
-      },
       {
         "id": "af-ZA-WillemNeural",
         "name": "Willem",
@@ -1047,13 +690,6 @@ const LOCALES = [
     "label": "Albanian (Albania)",
     "rtl": false,
     "voices": [
-      {
-        "id": "sq-AL-AnilaNeural",
-        "name": "Anila",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Anila (Female) — Friendly, Positive"
-      },
       {
         "id": "sq-AL-IlirNeural",
         "name": "Ilir",
@@ -1077,13 +713,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Ameha (Male) — Friendly, Positive"
-      },
-      {
-        "id": "am-ET-MekdesNeural",
-        "name": "Mekdes",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Mekdes (Female) — Friendly, Positive"
       }
     ]
   },
@@ -1095,13 +724,6 @@ const LOCALES = [
     "label": "Arabic (Algeria)",
     "rtl": true,
     "voices": [
-      {
-        "id": "ar-DZ-AminaNeural",
-        "name": "Amina",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Amina (Female) — Friendly, Positive"
-      },
       {
         "id": "ar-DZ-IsmaelNeural",
         "name": "Ismael",
@@ -1125,13 +747,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Ali (Male) — Friendly, Positive"
-      },
-      {
-        "id": "ar-BH-LailaNeural",
-        "name": "Laila",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Laila (Female) — Friendly, Positive"
       }
     ]
   },
@@ -1149,13 +764,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Bassel (Male) — Friendly, Positive"
-      },
-      {
-        "id": "ar-IQ-RanaNeural",
-        "name": "Rana",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Rana (Female) — Friendly, Positive"
       }
     ]
   },
@@ -1167,13 +775,6 @@ const LOCALES = [
     "label": "Arabic (Jordan)",
     "rtl": true,
     "voices": [
-      {
-        "id": "ar-JO-SanaNeural",
-        "name": "Sana",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Sana (Female) — Friendly, Positive"
-      },
       {
         "id": "ar-JO-TaimNeural",
         "name": "Taim",
@@ -1197,13 +798,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Fahed (Male) — Friendly, Positive"
-      },
-      {
-        "id": "ar-KW-NouraNeural",
-        "name": "Noura",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Noura (Female) — Friendly, Positive"
       }
     ]
   },
@@ -1215,13 +809,6 @@ const LOCALES = [
     "label": "Arabic (Lebanon)",
     "rtl": true,
     "voices": [
-      {
-        "id": "ar-LB-LaylaNeural",
-        "name": "Layla",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Layla (Female) — Friendly, Positive"
-      },
       {
         "id": "ar-LB-RamiNeural",
         "name": "Rami",
@@ -1239,13 +826,6 @@ const LOCALES = [
     "label": "Arabic (Libya)",
     "rtl": true,
     "voices": [
-      {
-        "id": "ar-LY-ImanNeural",
-        "name": "Iman",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Iman (Female) — Friendly, Positive"
-      },
       {
         "id": "ar-LY-OmarNeural",
         "name": "Omar",
@@ -1269,13 +849,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Jamal (Male) — Friendly, Positive"
-      },
-      {
-        "id": "ar-MA-MounaNeural",
-        "name": "Mouna",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Mouna (Female) — Friendly, Positive"
       }
     ]
   },
@@ -1293,13 +866,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Abdullah (Male) — Friendly, Positive"
-      },
-      {
-        "id": "ar-OM-AyshaNeural",
-        "name": "Aysha",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Aysha (Female) — Friendly, Positive"
       }
     ]
   },
@@ -1311,13 +877,6 @@ const LOCALES = [
     "label": "Arabic (Qatar)",
     "rtl": true,
     "voices": [
-      {
-        "id": "ar-QA-AmalNeural",
-        "name": "Amal",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Amal (Female) — Friendly, Positive"
-      },
       {
         "id": "ar-QA-MoazNeural",
         "name": "Moaz",
@@ -1335,13 +894,6 @@ const LOCALES = [
     "label": "Arabic (Syria)",
     "rtl": true,
     "voices": [
-      {
-        "id": "ar-SY-AmanyNeural",
-        "name": "Amany",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Amany (Female) — Friendly, Positive"
-      },
       {
         "id": "ar-SY-LaithNeural",
         "name": "Laith",
@@ -1365,13 +917,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Hedi (Male) — Friendly, Positive"
-      },
-      {
-        "id": "ar-TN-ReemNeural",
-        "name": "Reem",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Reem (Female) — Friendly, Positive"
       }
     ]
   },
@@ -1383,13 +928,6 @@ const LOCALES = [
     "label": "Arabic (Yemen)",
     "rtl": true,
     "voices": [
-      {
-        "id": "ar-YE-MaryamNeural",
-        "name": "Maryam",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Maryam (Female) — Friendly, Positive"
-      },
       {
         "id": "ar-YE-SalehNeural",
         "name": "Saleh",
@@ -1413,13 +951,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Babek (Male) — Friendly, Positive"
-      },
-      {
-        "id": "az-AZ-BanuNeural",
-        "name": "Banu",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Banu (Female) — Friendly, Positive"
       }
     ]
   },
@@ -1431,13 +962,6 @@ const LOCALES = [
     "label": "Bosnian (Bosnia and Herzegovina)",
     "rtl": false,
     "voices": [
-      {
-        "id": "bs-BA-VesnaNeural",
-        "name": "Vesna",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Vesna (Female) — Friendly, Positive"
-      },
       {
         "id": "bs-BA-GoranNeural",
         "name": "Goran",
@@ -1461,13 +985,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Borislav (Male) — Friendly, Positive"
-      },
-      {
-        "id": "bg-BG-KalinaNeural",
-        "name": "Kalina",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Kalina (Female) — Friendly, Positive"
       }
     ]
   },
@@ -1479,13 +996,6 @@ const LOCALES = [
     "label": "Burmese (Myanmar)",
     "rtl": false,
     "voices": [
-      {
-        "id": "my-MM-NilarNeural",
-        "name": "Nilar",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Nilar (Female) — Friendly, Positive"
-      },
       {
         "id": "my-MM-ThihaNeural",
         "name": "Thiha",
@@ -1509,47 +1019,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Enric (Male) — Friendly, Positive"
-      },
-      {
-        "id": "ca-ES-JoanaNeural",
-        "name": "Joana",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Joana (Female) — Friendly, Positive"
-      }
-    ]
-  },
-  {
-    "code": "zh-CN-liaoning",
-    "lang": "zh",
-    "name": "Chinese",
-    "region": "Northeastern Mandarin, Simplified",
-    "label": "Chinese (Northeastern Mandarin, Simplified)",
-    "rtl": false,
-    "voices": [
-      {
-        "id": "zh-CN-liaoning-XiaobeiNeural",
-        "name": "liaoning",
-        "gender": "Female",
-        "personalities": "Humorous",
-        "label": "liaoning (Female) — Humorous"
-      }
-    ]
-  },
-  {
-    "code": "zh-CN-shaanxi",
-    "lang": "zh",
-    "name": "Chinese",
-    "region": "Zhongyuan Mandarin Shaanxi, Simplified",
-    "label": "Chinese (Zhongyuan Mandarin Shaanxi, Simplified)",
-    "rtl": false,
-    "voices": [
-      {
-        "id": "zh-CN-shaanxi-XiaoniNeural",
-        "name": "shaanxi",
-        "gender": "Female",
-        "personalities": "Bright",
-        "label": "shaanxi (Female) — Bright"
       }
     ]
   },
@@ -1561,13 +1030,6 @@ const LOCALES = [
     "label": "Croatian (Croatia)",
     "rtl": false,
     "voices": [
-      {
-        "id": "hr-HR-GabrijelaNeural",
-        "name": "Gabrijela",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Gabrijela (Female) — Friendly, Positive"
-      },
       {
         "id": "hr-HR-SreckoNeural",
         "name": "Srecko",
@@ -1591,13 +1053,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Antonin (Male) — Friendly, Positive"
-      },
-      {
-        "id": "cs-CZ-VlastaNeural",
-        "name": "Vlasta",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Vlasta (Female) — Friendly, Positive"
       }
     ]
   },
@@ -1609,13 +1064,6 @@ const LOCALES = [
     "label": "Danish (Denmark)",
     "rtl": false,
     "voices": [
-      {
-        "id": "da-DK-ChristelNeural",
-        "name": "Christel",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Christel (Female) — Friendly, Positive"
-      },
       {
         "id": "da-DK-JeppeNeural",
         "name": "Jeppe",
@@ -1639,13 +1087,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Arnaud (Male) — Friendly, Positive"
-      },
-      {
-        "id": "nl-BE-DenaNeural",
-        "name": "Dena",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Dena (Female) — Friendly, Positive"
       }
     ]
   },
@@ -1657,20 +1098,6 @@ const LOCALES = [
     "label": "Dutch (Netherlands)",
     "rtl": false,
     "voices": [
-      {
-        "id": "nl-NL-ColetteNeural",
-        "name": "Colette",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Colette (Female) — Friendly, Positive"
-      },
-      {
-        "id": "nl-NL-FennaNeural",
-        "name": "Fenna",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Fenna (Female) — Friendly, Positive"
-      },
       {
         "id": "nl-NL-MaartenNeural",
         "name": "Maarten",
@@ -1689,13 +1116,6 @@ const LOCALES = [
     "rtl": false,
     "voices": [
       {
-        "id": "en-HK-YanNeural",
-        "name": "Yan",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Yan (Female) — Friendly, Positive"
-      },
-      {
         "id": "en-HK-SamNeural",
         "name": "Sam",
         "gender": "Male",
@@ -1712,20 +1132,6 @@ const LOCALES = [
     "label": "English (India)",
     "rtl": false,
     "voices": [
-      {
-        "id": "en-IN-NeerjaExpressiveNeural",
-        "name": "NeerjaExpressive",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "NeerjaExpressive (Female) — Friendly, Positive"
-      },
-      {
-        "id": "en-IN-NeerjaNeural",
-        "name": "Neerja",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Neerja (Female) — Friendly, Positive"
-      },
       {
         "id": "en-IN-PrabhatNeural",
         "name": "Prabhat",
@@ -1749,13 +1155,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Connor (Male) — Friendly, Positive"
-      },
-      {
-        "id": "en-IE-EmilyNeural",
-        "name": "Emily",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Emily (Female) — Friendly, Positive"
       }
     ]
   },
@@ -1767,13 +1166,6 @@ const LOCALES = [
     "label": "English (Kenya)",
     "rtl": false,
     "voices": [
-      {
-        "id": "en-KE-AsiliaNeural",
-        "name": "Asilia",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Asilia (Female) — Friendly, Positive"
-      },
       {
         "id": "en-KE-ChilembaNeural",
         "name": "Chilemba",
@@ -1797,13 +1189,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Mitchell (Male) — Friendly, Positive"
-      },
-      {
-        "id": "en-NZ-MollyNeural",
-        "name": "Molly",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Molly (Female) — Friendly, Positive"
       }
     ]
   },
@@ -1821,13 +1206,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Abeo (Male) — Friendly, Positive"
-      },
-      {
-        "id": "en-NG-EzinneNeural",
-        "name": "Ezinne",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Ezinne (Female) — Friendly, Positive"
       }
     ]
   },
@@ -1845,13 +1223,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "James (Male) — Friendly, Positive"
-      },
-      {
-        "id": "en-PH-RosaNeural",
-        "name": "Rosa",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Rosa (Female) — Friendly, Positive"
       }
     ]
   },
@@ -1863,13 +1234,6 @@ const LOCALES = [
     "label": "English (Singapore)",
     "rtl": false,
     "voices": [
-      {
-        "id": "en-SG-LunaNeural",
-        "name": "Luna",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Luna (Female) — Friendly, Positive"
-      },
       {
         "id": "en-SG-WayneNeural",
         "name": "Wayne",
@@ -1887,13 +1251,6 @@ const LOCALES = [
     "label": "English (South Africa)",
     "rtl": false,
     "voices": [
-      {
-        "id": "en-ZA-LeahNeural",
-        "name": "Leah",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Leah (Female) — Friendly, Positive"
-      },
       {
         "id": "en-ZA-LukeNeural",
         "name": "Luke",
@@ -1917,13 +1274,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Elimu (Male) — Friendly, Positive"
-      },
-      {
-        "id": "en-TZ-ImaniNeural",
-        "name": "Imani",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Imani (Female) — Friendly, Positive"
       }
     ]
   },
@@ -1935,13 +1285,6 @@ const LOCALES = [
     "label": "Estonian (Estonia)",
     "rtl": false,
     "voices": [
-      {
-        "id": "et-EE-AnuNeural",
-        "name": "Anu",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Anu (Female) — Friendly, Positive"
-      },
       {
         "id": "et-EE-KertNeural",
         "name": "Kert",
@@ -1965,13 +1308,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Angelo (Male) — Friendly, Positive"
-      },
-      {
-        "id": "fil-PH-BlessicaNeural",
-        "name": "Blessica",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Blessica (Female) — Friendly, Positive"
       }
     ]
   },
@@ -1989,13 +1325,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Harri (Male) — Friendly, Positive"
-      },
-      {
-        "id": "fi-FI-NooraNeural",
-        "name": "Noora",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Noora (Female) — Friendly, Positive"
       }
     ]
   },
@@ -2007,13 +1336,6 @@ const LOCALES = [
     "label": "French (Belgium)",
     "rtl": false,
     "voices": [
-      {
-        "id": "fr-BE-CharlineNeural",
-        "name": "Charline",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Charline (Female) — Friendly, Positive"
-      },
       {
         "id": "fr-BE-GerardNeural",
         "name": "Gerard",
@@ -2031,13 +1353,6 @@ const LOCALES = [
     "label": "French (Switzerland)",
     "rtl": false,
     "voices": [
-      {
-        "id": "fr-CH-ArianeNeural",
-        "name": "Ariane",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Ariane (Female) — Friendly, Positive"
-      },
       {
         "id": "fr-CH-FabriceNeural",
         "name": "Fabrice",
@@ -2061,13 +1376,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Roi (Male) — Friendly, Positive"
-      },
-      {
-        "id": "gl-ES-SabelaNeural",
-        "name": "Sabela",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Sabela (Female) — Friendly, Positive"
       }
     ]
   },
@@ -2079,13 +1387,6 @@ const LOCALES = [
     "label": "Georgian (Georgia)",
     "rtl": false,
     "voices": [
-      {
-        "id": "ka-GE-EkaNeural",
-        "name": "Eka",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Eka (Female) — Friendly, Positive"
-      },
       {
         "id": "ka-GE-GiorgiNeural",
         "name": "Giorgi",
@@ -2103,13 +1404,6 @@ const LOCALES = [
     "label": "German (Austria)",
     "rtl": false,
     "voices": [
-      {
-        "id": "de-AT-IngridNeural",
-        "name": "Ingrid",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Ingrid (Female) — Friendly, Positive"
-      },
       {
         "id": "de-AT-JonasNeural",
         "name": "Jonas",
@@ -2133,13 +1427,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Jan (Male) — Friendly, Positive"
-      },
-      {
-        "id": "de-CH-LeniNeural",
-        "name": "Leni",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Leni (Female) — Friendly, Positive"
       }
     ]
   },
@@ -2151,13 +1438,6 @@ const LOCALES = [
     "label": "Greek (Greece)",
     "rtl": false,
     "voices": [
-      {
-        "id": "el-GR-AthinaNeural",
-        "name": "Athina",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Athina (Female) — Friendly, Positive"
-      },
       {
         "id": "el-GR-NestorasNeural",
         "name": "Nestoras",
@@ -2175,13 +1455,6 @@ const LOCALES = [
     "label": "Gujarati (India)",
     "rtl": false,
     "voices": [
-      {
-        "id": "gu-IN-DhwaniNeural",
-        "name": "Dhwani",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Dhwani (Female) — Friendly, Positive"
-      },
       {
         "id": "gu-IN-NiranjanNeural",
         "name": "Niranjan",
@@ -2205,13 +1478,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Avri (Male) — Friendly, Positive"
-      },
-      {
-        "id": "he-IL-HilaNeural",
-        "name": "Hila",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Hila (Female) — Friendly, Positive"
       }
     ]
   },
@@ -2223,13 +1489,6 @@ const LOCALES = [
     "label": "Hungarian (Hungary)",
     "rtl": false,
     "voices": [
-      {
-        "id": "hu-HU-NoemiNeural",
-        "name": "Noemi",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Noemi (Female) — Friendly, Positive"
-      },
       {
         "id": "hu-HU-TamasNeural",
         "name": "Tamas",
@@ -2248,13 +1507,6 @@ const LOCALES = [
     "rtl": false,
     "voices": [
       {
-        "id": "is-IS-GudrunNeural",
-        "name": "Gudrun",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Gudrun (Female) — Friendly, Positive"
-      },
-      {
         "id": "is-IS-GunnarNeural",
         "name": "Gunnar",
         "gender": "Male",
@@ -2272,13 +1524,6 @@ const LOCALES = [
     "rtl": false,
     "voices": [
       {
-        "id": "iu-Latn-CA-SiqiniqNeural",
-        "name": "CA",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "CA (Female) — Friendly, Positive"
-      },
-      {
         "id": "iu-Latn-CA-TaqqiqNeural",
         "name": "CA",
         "gender": "Male",
@@ -2295,13 +1540,6 @@ const LOCALES = [
     "label": "Inuktitut (Syllabics, Canada)",
     "rtl": false,
     "voices": [
-      {
-        "id": "iu-Cans-CA-SiqiniqNeural",
-        "name": "CA",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "CA (Female) — Friendly, Positive"
-      },
       {
         "id": "iu-Cans-CA-TaqqiqNeural",
         "name": "CA",
@@ -2325,13 +1563,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Colm (Male) — Friendly, Positive"
-      },
-      {
-        "id": "ga-IE-OrlaNeural",
-        "name": "Orla",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Orla (Female) — Friendly, Positive"
       }
     ]
   },
@@ -2349,13 +1580,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Dimas (Male) — Friendly, Positive"
-      },
-      {
-        "id": "jv-ID-SitiNeural",
-        "name": "Siti",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Siti (Female) — Friendly, Positive"
       }
     ]
   },
@@ -2373,13 +1597,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Gagan (Male) — Friendly, Positive"
-      },
-      {
-        "id": "kn-IN-SapnaNeural",
-        "name": "Sapna",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Sapna (Female) — Friendly, Positive"
       }
     ]
   },
@@ -2391,13 +1608,6 @@ const LOCALES = [
     "label": "Kazakh (Kazakhstan)",
     "rtl": false,
     "voices": [
-      {
-        "id": "kk-KZ-AigulNeural",
-        "name": "Aigul",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Aigul (Female) — Friendly, Positive"
-      },
       {
         "id": "kk-KZ-DauletNeural",
         "name": "Daulet",
@@ -2421,13 +1631,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Piseth (Male) — Friendly, Positive"
-      },
-      {
-        "id": "km-KH-SreymomNeural",
-        "name": "Sreymom",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Sreymom (Female) — Friendly, Positive"
       }
     ]
   },
@@ -2445,13 +1648,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Chanthavong (Male) — Friendly, Positive"
-      },
-      {
-        "id": "lo-LA-KeomanyNeural",
-        "name": "Keomany",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Keomany (Female) — Friendly, Positive"
       }
     ]
   },
@@ -2463,13 +1659,6 @@ const LOCALES = [
     "label": "Latvian (Latvia)",
     "rtl": false,
     "voices": [
-      {
-        "id": "lv-LV-EveritaNeural",
-        "name": "Everita",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Everita (Female) — Friendly, Positive"
-      },
       {
         "id": "lv-LV-NilsNeural",
         "name": "Nils",
@@ -2493,13 +1682,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Leonas (Male) — Friendly, Positive"
-      },
-      {
-        "id": "lt-LT-OnaNeural",
-        "name": "Ona",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Ona (Female) — Friendly, Positive"
       }
     ]
   },
@@ -2517,13 +1699,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Aleksandar (Male) — Friendly, Positive"
-      },
-      {
-        "id": "mk-MK-MarijaNeural",
-        "name": "Marija",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Marija (Female) — Friendly, Positive"
       }
     ]
   },
@@ -2541,13 +1716,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Osman (Male) — Friendly, Positive"
-      },
-      {
-        "id": "ms-MY-YasminNeural",
-        "name": "Yasmin",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Yasmin (Female) — Friendly, Positive"
       }
     ]
   },
@@ -2565,13 +1733,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Midhun (Male) — Friendly, Positive"
-      },
-      {
-        "id": "ml-IN-SobhanaNeural",
-        "name": "Sobhana",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Sobhana (Female) — Friendly, Positive"
       }
     ]
   },
@@ -2583,13 +1744,6 @@ const LOCALES = [
     "label": "Maltese (Malta)",
     "rtl": false,
     "voices": [
-      {
-        "id": "mt-MT-GraceNeural",
-        "name": "Grace",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Grace (Female) — Friendly, Positive"
-      },
       {
         "id": "mt-MT-JosephNeural",
         "name": "Joseph",
@@ -2607,13 +1761,6 @@ const LOCALES = [
     "label": "Marathi (India)",
     "rtl": false,
     "voices": [
-      {
-        "id": "mr-IN-AarohiNeural",
-        "name": "Aarohi",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Aarohi (Female) — Friendly, Positive"
-      },
       {
         "id": "mr-IN-ManoharNeural",
         "name": "Manohar",
@@ -2637,13 +1784,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Bataa (Male) — Friendly, Positive"
-      },
-      {
-        "id": "mn-MN-YesuiNeural",
-        "name": "Yesui",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Yesui (Female) — Friendly, Positive"
       }
     ]
   },
@@ -2655,13 +1795,6 @@ const LOCALES = [
     "label": "Nepali (Nepal)",
     "rtl": false,
     "voices": [
-      {
-        "id": "ne-NP-HemkalaNeural",
-        "name": "Hemkala",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Hemkala (Female) — Friendly, Positive"
-      },
       {
         "id": "ne-NP-SagarNeural",
         "name": "Sagar",
@@ -2685,13 +1818,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Finn (Male) — Friendly, Positive"
-      },
-      {
-        "id": "nb-NO-PernilleNeural",
-        "name": "Pernille",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Pernille (Female) — Friendly, Positive"
       }
     ]
   },
@@ -2709,13 +1835,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "GulNawaz (Male) — Friendly, Positive"
-      },
-      {
-        "id": "ps-AF-LatifaNeural",
-        "name": "Latifa",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Latifa (Female) — Friendly, Positive"
       }
     ]
   },
@@ -2733,13 +1852,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Marek (Male) — Friendly, Positive"
-      },
-      {
-        "id": "pl-PL-ZofiaNeural",
-        "name": "Zofia",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Zofia (Female) — Friendly, Positive"
       }
     ]
   },
@@ -2751,13 +1863,6 @@ const LOCALES = [
     "label": "Romanian (Romania)",
     "rtl": false,
     "voices": [
-      {
-        "id": "ro-RO-AlinaNeural",
-        "name": "Alina",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Alina (Female) — Friendly, Positive"
-      },
       {
         "id": "ro-RO-EmilNeural",
         "name": "Emil",
@@ -2781,13 +1886,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Nicholas (Male) — Friendly, Positive"
-      },
-      {
-        "id": "sr-RS-SophieNeural",
-        "name": "Sophie",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Sophie (Female) — Friendly, Positive"
       }
     ]
   },
@@ -2805,13 +1903,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Sameera (Male) — Friendly, Positive"
-      },
-      {
-        "id": "si-LK-ThiliniNeural",
-        "name": "Thilini",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Thilini (Female) — Friendly, Positive"
       }
     ]
   },
@@ -2829,13 +1920,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Lukas (Male) — Friendly, Positive"
-      },
-      {
-        "id": "sk-SK-ViktoriaNeural",
-        "name": "Viktoria",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Viktoria (Female) — Friendly, Positive"
       }
     ]
   },
@@ -2847,13 +1931,6 @@ const LOCALES = [
     "label": "Slovenian (Slovenia)",
     "rtl": false,
     "voices": [
-      {
-        "id": "sl-SI-PetraNeural",
-        "name": "Petra",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Petra (Female) — Friendly, Positive"
-      },
       {
         "id": "sl-SI-RokNeural",
         "name": "Rok",
@@ -2877,13 +1954,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Muuse (Male) — Friendly, Positive"
-      },
-      {
-        "id": "so-SO-UbaxNeural",
-        "name": "Ubax",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Ubax (Female) — Friendly, Positive"
       }
     ]
   },
@@ -2895,13 +1965,6 @@ const LOCALES = [
     "label": "Spanish (Argentina)",
     "rtl": false,
     "voices": [
-      {
-        "id": "es-AR-ElenaNeural",
-        "name": "Elena",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Elena (Female) — Friendly, Positive"
-      },
       {
         "id": "es-AR-TomasNeural",
         "name": "Tomas",
@@ -2925,13 +1988,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Marcelo (Male) — Friendly, Positive"
-      },
-      {
-        "id": "es-BO-SofiaNeural",
-        "name": "Sofia",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Sofia (Female) — Friendly, Positive"
       }
     ]
   },
@@ -2943,13 +1999,6 @@ const LOCALES = [
     "label": "Spanish (Chile)",
     "rtl": false,
     "voices": [
-      {
-        "id": "es-CL-CatalinaNeural",
-        "name": "Catalina",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Catalina (Female) — Friendly, Positive"
-      },
       {
         "id": "es-CL-LorenzoNeural",
         "name": "Lorenzo",
@@ -2973,13 +2022,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Gonzalo (Male) — Friendly, Positive"
-      },
-      {
-        "id": "es-CO-SalomeNeural",
-        "name": "Salome",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Salome (Female) — Friendly, Positive"
       }
     ]
   },
@@ -2997,13 +2039,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Juan (Male) — Friendly, Positive"
-      },
-      {
-        "id": "es-CR-MariaNeural",
-        "name": "Maria",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Maria (Female) — Friendly, Positive"
       }
     ]
   },
@@ -3015,13 +2050,6 @@ const LOCALES = [
     "label": "Spanish (Cuba)",
     "rtl": false,
     "voices": [
-      {
-        "id": "es-CU-BelkysNeural",
-        "name": "Belkys",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Belkys (Female) — Friendly, Positive"
-      },
       {
         "id": "es-CU-ManuelNeural",
         "name": "Manuel",
@@ -3045,13 +2073,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Emilio (Male) — Friendly, Positive"
-      },
-      {
-        "id": "es-DO-RamonaNeural",
-        "name": "Ramona",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Ramona (Female) — Friendly, Positive"
       }
     ]
   },
@@ -3063,13 +2084,6 @@ const LOCALES = [
     "label": "Spanish (Ecuador)",
     "rtl": false,
     "voices": [
-      {
-        "id": "es-EC-AndreaNeural",
-        "name": "Andrea",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Andrea (Female) — Friendly, Positive"
-      },
       {
         "id": "es-EC-LuisNeural",
         "name": "Luis",
@@ -3087,13 +2101,6 @@ const LOCALES = [
     "label": "Spanish (El Salvador)",
     "rtl": false,
     "voices": [
-      {
-        "id": "es-SV-LorenaNeural",
-        "name": "Lorena",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Lorena (Female) — Friendly, Positive"
-      },
       {
         "id": "es-SV-RodrigoNeural",
         "name": "Rodrigo",
@@ -3117,13 +2124,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Javier (Male) — Friendly, Positive"
-      },
-      {
-        "id": "es-GQ-TeresaNeural",
-        "name": "Teresa",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Teresa (Female) — Friendly, Positive"
       }
     ]
   },
@@ -3141,13 +2141,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Andres (Male) — Friendly, Positive"
-      },
-      {
-        "id": "es-GT-MartaNeural",
-        "name": "Marta",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Marta (Female) — Friendly, Positive"
       }
     ]
   },
@@ -3165,13 +2158,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Carlos (Male) — Friendly, Positive"
-      },
-      {
-        "id": "es-HN-KarlaNeural",
-        "name": "Karla",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Karla (Female) — Friendly, Positive"
       }
     ]
   },
@@ -3189,13 +2175,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Federico (Male) — Friendly, Positive"
-      },
-      {
-        "id": "es-NI-YolandaNeural",
-        "name": "Yolanda",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Yolanda (Female) — Friendly, Positive"
       }
     ]
   },
@@ -3207,13 +2186,6 @@ const LOCALES = [
     "label": "Spanish (Panama)",
     "rtl": false,
     "voices": [
-      {
-        "id": "es-PA-MargaritaNeural",
-        "name": "Margarita",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Margarita (Female) — Friendly, Positive"
-      },
       {
         "id": "es-PA-RobertoNeural",
         "name": "Roberto",
@@ -3237,13 +2209,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Mario (Male) — Friendly, Positive"
-      },
-      {
-        "id": "es-PY-TaniaNeural",
-        "name": "Tania",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Tania (Female) — Friendly, Positive"
       }
     ]
   },
@@ -3261,13 +2226,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Alex (Male) — Friendly, Positive"
-      },
-      {
-        "id": "es-PE-CamilaNeural",
-        "name": "Camila",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Camila (Female) — Friendly, Positive"
       }
     ]
   },
@@ -3279,13 +2237,6 @@ const LOCALES = [
     "label": "Spanish (Puerto Rico)",
     "rtl": false,
     "voices": [
-      {
-        "id": "es-PR-KarinaNeural",
-        "name": "Karina",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Karina (Female) — Friendly, Positive"
-      },
       {
         "id": "es-PR-VictorNeural",
         "name": "Victor",
@@ -3309,13 +2260,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Alonso (Male) — Friendly, Positive"
-      },
-      {
-        "id": "es-US-PalomaNeural",
-        "name": "Paloma",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Paloma (Female) — Friendly, Positive"
       }
     ]
   },
@@ -3333,13 +2277,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Mateo (Male) — Friendly, Positive"
-      },
-      {
-        "id": "es-UY-ValentinaNeural",
-        "name": "Valentina",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Valentina (Female) — Friendly, Positive"
       }
     ]
   },
@@ -3351,13 +2288,6 @@ const LOCALES = [
     "label": "Spanish (Venezuela)",
     "rtl": false,
     "voices": [
-      {
-        "id": "es-VE-PaolaNeural",
-        "name": "Paola",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Paola (Female) — Friendly, Positive"
-      },
       {
         "id": "es-VE-SebastianNeural",
         "name": "Sebastian",
@@ -3381,13 +2311,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Jajang (Male) — Friendly, Positive"
-      },
-      {
-        "id": "su-ID-TutiNeural",
-        "name": "Tuti",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Tuti (Female) — Friendly, Positive"
       }
     ]
   },
@@ -3405,13 +2328,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Rafiki (Male) — Friendly, Positive"
-      },
-      {
-        "id": "sw-KE-ZuriNeural",
-        "name": "Zuri",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Zuri (Female) — Friendly, Positive"
       }
     ]
   },
@@ -3429,13 +2345,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Daudi (Male) — Friendly, Positive"
-      },
-      {
-        "id": "sw-TZ-RehemaNeural",
-        "name": "Rehema",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Rehema (Female) — Friendly, Positive"
       }
     ]
   },
@@ -3453,13 +2362,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Mattias (Male) — Friendly, Positive"
-      },
-      {
-        "id": "sv-SE-SofieNeural",
-        "name": "Sofie",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Sofie (Female) — Friendly, Positive"
       }
     ]
   },
@@ -3471,13 +2373,6 @@ const LOCALES = [
     "label": "Tamil (India)",
     "rtl": false,
     "voices": [
-      {
-        "id": "ta-IN-PallaviNeural",
-        "name": "Pallavi",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Pallavi (Female) — Friendly, Positive"
-      },
       {
         "id": "ta-IN-ValluvarNeural",
         "name": "Valluvar",
@@ -3495,13 +2390,6 @@ const LOCALES = [
     "label": "Tamil (Malaysia)",
     "rtl": false,
     "voices": [
-      {
-        "id": "ta-MY-KaniNeural",
-        "name": "Kani",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Kani (Female) — Friendly, Positive"
-      },
       {
         "id": "ta-MY-SuryaNeural",
         "name": "Surya",
@@ -3525,13 +2413,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Anbu (Male) — Friendly, Positive"
-      },
-      {
-        "id": "ta-SG-VenbaNeural",
-        "name": "Venba",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Venba (Female) — Friendly, Positive"
       }
     ]
   },
@@ -3549,13 +2430,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Kumar (Male) — Friendly, Positive"
-      },
-      {
-        "id": "ta-LK-SaranyaNeural",
-        "name": "Saranya",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Saranya (Female) — Friendly, Positive"
       }
     ]
   },
@@ -3573,13 +2447,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Mohan (Male) — Friendly, Positive"
-      },
-      {
-        "id": "te-IN-ShrutiNeural",
-        "name": "Shruti",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Shruti (Female) — Friendly, Positive"
       }
     ]
   },
@@ -3597,13 +2464,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Ostap (Male) — Friendly, Positive"
-      },
-      {
-        "id": "uk-UA-PolinaNeural",
-        "name": "Polina",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Polina (Female) — Friendly, Positive"
       }
     ]
   },
@@ -3615,13 +2475,6 @@ const LOCALES = [
     "label": "Uzbek (Latin, Uzbekistan)",
     "rtl": false,
     "voices": [
-      {
-        "id": "uz-UZ-MadinaNeural",
-        "name": "Madina",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Madina (Female) — Friendly, Positive"
-      },
       {
         "id": "uz-UZ-SardorNeural",
         "name": "Sardor",
@@ -3645,13 +2498,6 @@ const LOCALES = [
         "gender": "Male",
         "personalities": "Friendly, Positive",
         "label": "Aled (Male) — Friendly, Positive"
-      },
-      {
-        "id": "cy-GB-NiaNeural",
-        "name": "Nia",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Nia (Female) — Friendly, Positive"
       }
     ]
   },
@@ -3663,13 +2509,6 @@ const LOCALES = [
     "label": "Zulu (South Africa)",
     "rtl": false,
     "voices": [
-      {
-        "id": "zu-ZA-ThandoNeural",
-        "name": "Thando",
-        "gender": "Female",
-        "personalities": "Friendly, Positive",
-        "label": "Thando (Female) — Friendly, Positive"
-      },
       {
         "id": "zu-ZA-ThembaNeural",
         "name": "Themba",
@@ -3688,20 +2527,20 @@ function getLocales() {
 }
 
 function getVoicesForLocale(localeCode) {
-  const target = String(localeCode || '').toLowerCase();
+  const target = String(localeCode || "").toLowerCase();
   const loc = LOCALES.find((l) => l.code.toLowerCase() === target);
   return loc ? loc.voices : [];
 }
 
 function findVoice(voiceId) {
-  const target = String(voiceId || '').toLowerCase();
+  const target = String(voiceId || "").toLowerCase();
   return ALL_VOICES.find((v) => v.id.toLowerCase() === target) || null;
 }
 
 function defaultVoiceFor(localeCode, langCode) {
   const forLoc = getVoicesForLocale(localeCode);
   if (forLoc.length) return forLoc[0];
-  const targetLang = String(langCode || '').toLowerCase();
+  const targetLang = String(langCode || "").toLowerCase();
   const loc = LOCALES.find((l) => l.lang.toLowerCase() === targetLang);
   if (loc && loc.voices.length) return loc.voices[0];
   return ALL_VOICES[0];

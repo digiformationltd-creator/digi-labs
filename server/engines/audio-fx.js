@@ -68,7 +68,7 @@ const EFFECTS = {
   // ── Voice changer ─────────────────────────────────────────────────────────
   deep: { group: "Voice", label: "Deep", hint: "Lower and weightier.", filter: pitch(-5, "equalizer=f=120:t=q:w=1:g=3") },
   male: { group: "Voice", label: "Male", hint: "A few semitones down.", filter: pitch(-3) },
-  female: { group: "Voice", label: "Female", hint: "Up, with added air.", filter: pitch(4, "equalizer=f=3000:t=q:w=1:g=2") },
+  highpitch: { group: "Voice", label: "High Pitch", hint: "Up, with added air.", filter: pitch(4, "equalizer=f=3000:t=q:w=1:g=2") },
   child: { group: "Voice", label: "Child", hint: "Higher and lighter.", filter: pitch(7) },
   chipmunk: { group: "Voice", label: "Chipmunk", hint: "Comic.", filter: pitch(10) },
   monster: { group: "Voice", label: "Monster", hint: "Low, with a short echo.", filter: pitch(-9, "aecho=0.8:0.6:40:0.3") },

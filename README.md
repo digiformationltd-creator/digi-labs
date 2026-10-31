@@ -67,11 +67,11 @@ DIGI LABS integrates two powerful text-to-speech engines to give you complete fr
   - `Promo` — Energetic, high-impact hook delivery for viral shorts, reels, and ads.
   - `Explainer` — Friendly, clear instructional tone for tutorials and educational courses.
   - `Calm` — Soothing, slow cadence for bedtime stories and mindfulness content.
-- **Studio Vocal Characters**: Distinct profiles (`Charon` — deep & steady, `Puck` — bright & lively, `Fenrir` — weighty & serious, `Orus` — warm & even).
+- **Studio Vocal Characters**: Distinct male character profiles (`Charon` — deep & steady, `Puck` — bright & lively, `Fenrir` — weighty & serious, `Orus` — warm & even).
 
 ### 2. Free Voice (Edge-TTS Unlimited Neural Engine)
 - **Unlimited Long-Form Narration**: 100% free with zero API keys and zero character limits.
-- **140+ Global Locales & Dialects**: Verified native neural voices covering English (US, UK, Australia, Canada, India, etc.), Urdu (Pakistan, India), Hindi, Arabic (Saudi Arabia, UAE, Egypt, etc.), Spanish, French, German, Portuguese, Italian, Turkish, Chinese, Japanese, Korean, Russian, Bengali, Persian, Indonesian, Vietnamese, Thai, and more.
+- **140+ Global Locales & Dialects**: Verified native male neural voices covering English (US, UK, Australia, Canada, India, etc.), Urdu (Pakistan, India), Hindi, Arabic (Saudi Arabia, UAE, Egypt, etc.), Spanish, French, German, Portuguese, Italian, Turkish, Chinese, Japanese, Korean, Russian, Bengali, Persian, Indonesian, Vietnamese, Thai, and more (150+ natural male voices, strictly Male voices only).
 - **Pacing & Speed Controls**: Fine-grained speed adjustments from 0.60× to 1.60× with rate, pitch, and volume shaping.
 
 ---
@@ -132,7 +132,7 @@ npm run dist
 
 ## 🛠️ Architecture & Transparency
 
-- **Voice Synthesis**: Dual-engine architecture featuring Google Gemini 2.5 Flash Audio for studio-grade character inflection, alongside unlimited Edge-TTS neural speech covering 140+ global languages and regional accents.
+- **Voice Synthesis**: Dual-engine architecture featuring Google Gemini 2.5 Flash Audio for studio-grade character inflection, alongside unlimited Edge-TTS neural speech covering 140+ global languages and regional accents (strictly Male voices only).
 - **Audio Transcoding**: Bundled local static FFmpeg for 24kHz raw PCM transcoding and loudness normalization.
 - **Media Intelligence**: High-speed Cloudflare Workers AI + optional local Whisper STT.
 - **Privacy Guarantee**: Zero tracking, zero telemetry, and zero middleman servers. All scripts and audio files stay strictly on your local PC.

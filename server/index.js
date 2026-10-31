@@ -126,7 +126,7 @@ app.get("/api/engines", (_req, res) => {
         voices: gemini.VOICES,
         styles: gemini.styleList(),
         quota: q,
-        best_for: "Short, polished pieces — adverts, intros, brand voiceovers. Multilingual studio voices.",
+        best_for: "Short, polished pieces — adverts, intros, brand voiceovers. Multilingual male studio voices.",
       },
       {
         id: "free",
@@ -139,7 +139,7 @@ app.get("/api/engines", (_req, res) => {
         locales: edge.catalog.getLocales(),
         styles: edge.styleList(),
         quota: null,
-        best_for: "Unlimited long-form narration, audiobooks, and 140+ global languages & dialects.",
+        best_for: "Unlimited long-form narration, audiobooks, and 140+ global languages & dialects. Male voices only.",
       },
     ],
   });
