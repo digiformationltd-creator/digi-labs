@@ -64,10 +64,10 @@ const STYLE_LABELS = {
 };
 
 const VOICES = [
-  { id: "Charon", label: "Charon — deep, steady" },
-  { id: "Puck", label: "Puck — bright, lively" },
-  { id: "Fenrir", label: "Fenrir — weighty, serious" },
-  { id: "Orus", label: "Orus — warm, even" },
+  { id: "Charon", label: "Charon — deep, steady (Male)", gender: "Male" },
+  { id: "Puck", label: "Puck — bright, lively (Male)", gender: "Male" },
+  { id: "Fenrir", label: "Fenrir — weighty, serious (Male)", gender: "Male" },
+  { id: "Orus", label: "Orus — warm, even (Male)", gender: "Male" },
 ];
 
 // ── Daily budget ─────────────────────────────────────────────────────────────
@@ -111,7 +111,7 @@ function pcmToMp3(ffmpeg, pcmPath, mp3Path) {
  * Speak one passage.
  * @returns {Promise<{buffer: Buffer, voice: string, keyUsed: number}>}
  */
-async function speak({ text, voice, style, ffmpeg }) {
+async function speak({ text, voice, style, language, ffmpeg }) {
   const raw = String(text || "").trim();
   if (!raw) throw new Error("No text supplied.");
 
@@ -120,7 +120,12 @@ async function speak({ text, voice, style, ffmpeg }) {
 
   const pick = VOICES.some((v) => v.id === voice) ? voice : "Charon";
   const prefix = STYLES[String(style || "").trim()] || "";
-  const line = prefix ? `${prefix} ${raw}` : raw;
+  let line = prefix ? `${prefix} ${raw}` : raw;
+
+  if (language && language !== "auto" && !raw.startsWith("Say this")) {
+    const langNote = `[Deliver naturally in ${language}]`;
+    line = prefix ? `${prefix} ${raw}` : `${langNote} ${raw}`;
+  }
 
   let res = null, lastWhy = "", keyUsed = 0;
   for (let i = 0; i < ks.length; i++) {

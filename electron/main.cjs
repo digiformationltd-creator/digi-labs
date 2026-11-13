@@ -32,7 +32,7 @@ function makeSplash() {
   splash = new BrowserWindow({
     width: 440, height: 340,
     frame: false, resizable: false, movable: true,
-    transparent: false, backgroundColor: "#060709",
+    transparent: true, backgroundColor: "#00000000",
     show: false, skipTaskbar: false,
     webPreferences: { preload: path.join(__dirname, "splash-preload.cjs"), contextIsolation: true },
   });

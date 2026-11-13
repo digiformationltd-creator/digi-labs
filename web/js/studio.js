@@ -18,6 +18,8 @@ const Studio = (() => {
   const state = {
     engines: [],
     engineId: null,
+    languages: [],
+    language: "ur",
     voice: "",
     style: "",
     speed: 1,
@@ -103,6 +105,100 @@ const Studio = (() => {
     }
   }
 
+  async function loadLanguages() {
+    try {
+      const res = await API.languages();
+      state.languages = res.languages || [];
+      const sel = $("langSelect");
+      if (!sel) return;
+      sel.innerHTML = "";
+
+      const optAuto = document.createElement("option");
+      optAuto.value = "auto";
+      optAuto.textContent = "🌐 Auto-Detect / All Languages";
+      sel.appendChild(optAuto);
+
+      for (const l of state.languages) {
+        const o = document.createElement("option");
+        o.value = l.code;
+        o.textContent = `${l.name} (${l.native})`;
+        sel.appendChild(o);
+      }
+      sel.value = state.language || "ur";
+      sel.addEventListener("change", onLanguageChange);
+    } catch (e) {
+      console.warn("Could not load language catalog:", e);
+    }
+  }
+
+  function onLanguageChange() {
+    const sel = $("langSelect");
+    if (!sel) return;
+    state.language = sel.value;
+    const langObj = state.languages.find((l) => l.code === state.language);
+    if (langObj && typeof langObj.rtl === "boolean") {
+      setRtlMode(langObj.rtl);
+    }
+    updateVoiceList();
+  }
+
+  function setRtlMode(on) {
+    state.rtl = !!on;
+    const btn = $("urduToggle");
+    if (btn) btn.setAttribute("aria-pressed", String(state.rtl));
+    $("textEditor").classList.toggle("rtl", state.rtl);
+  }
+
+  function updateVoiceList() {
+    const engine = state.engines.find((e) => e.id === state.engineId);
+    if (!engine) return;
+    const voiceSel = $("voiceSelect");
+    const hint = $("voiceHint");
+    voiceSel.innerHTML = "";
+
+    if (state.engineId === "studio") {
+      // Gemini Studio voices (Universal Male Voices)
+      for (const v of engine.voices || []) {
+        const o = document.createElement("option");
+        o.value = v.id;
+        o.textContent = v.label;
+        voiceSel.appendChild(o);
+      }
+      if (hint) {
+        const langObj = state.languages.find((l) => l.code === state.language);
+        hint.textContent = langObj
+          ? `Gemini studio voice delivers fluently in ${langObj.name}. Male only.`
+          : "Gemini studio voice delivers in chosen language. Male only.";
+      }
+    } else {
+      // Free Voice (Edge Neural) — strictly male voices
+      const allVoices = engine.voices || [];
+      const langCode = state.language && state.language !== "auto" ? state.language : "ur";
+      const matching = allVoices.filter(
+        (v) => v.lang === langCode || (v.id && v.id.toLowerCase().startsWith(langCode))
+      );
+      const list = matching.length ? matching : allVoices;
+
+      for (const v of list) {
+        const o = document.createElement("option");
+        o.value = v.id;
+        o.textContent = v.label || v.id;
+        voiceSel.appendChild(o);
+      }
+      if (hint) {
+        const langObj = state.languages.find((l) => l.code === state.language);
+        hint.textContent = matching.length
+          ? `Edge Neural male voice for ${langObj ? langObj.name : langCode}.`
+          : "Neural male voice. Male only.";
+      }
+    }
+
+    if (voiceSel.options.length > 0) {
+      voiceSel.selectedIndex = 0;
+      state.voice = voiceSel.value;
+    }
+  }
+
   function selectEngine(id) {
     const engine = state.engines.find((e) => e.id === id);
     if (!engine || !engine.ready) return;
@@ -112,19 +208,7 @@ const Studio = (() => {
       b.setAttribute("aria-pressed", String(b.dataset.id === id));
     }
 
-    const voice = $("voiceSelect");
-    voice.innerHTML = "";
-    for (const v of engine.voices || []) {
-      const o = document.createElement("option");
-      o.value = v.id; o.textContent = v.label;
-      voice.appendChild(o);
-    }
-    // An Urdu body of text should not default to an English voice.
-    if (state.rtl) {
-      const ur = (engine.voices || []).find((v) => v.lang === "ur");
-      if (ur) voice.value = ur.id;
-    }
-    state.voice = voice.value;
+    updateVoiceList();
 
     const style = $("styleSelect");
     style.innerHTML = "";
@@ -164,16 +248,13 @@ const Studio = (() => {
     showProgress("Queued", 0);
     $("resultPanel").classList.remove("on");
 
-    const engine = state.engines.find((e) => e.id === state.engineId);
-    const voiceMeta = (engine.voices || []).find((v) => v.id === state.voice);
-
     let job;
     try {
       job = await API.generate({
         engine: state.engineId,
         text,
         voice: state.voice,
-        language: (voiceMeta && voiceMeta.lang) || (state.rtl ? "ur" : "en"),
+        language: state.language || (state.rtl ? "ur" : "en"),
         style: state.style,
         speed: state.speed,
       });
@@ -386,11 +467,14 @@ const Studio = (() => {
       counts();
     });
 
-    $("urduToggle").addEventListener("click", (e) => {
-      state.rtl = !state.rtl;
-      e.currentTarget.setAttribute("aria-pressed", String(state.rtl));
-      $("textEditor").classList.toggle("rtl", state.rtl);
-      if (state.engineId) selectEngine(state.engineId);   // re-pick a matching voice
+    $("urduToggle").addEventListener("click", () => {
+      setRtlMode(!state.rtl);
+      if (state.rtl) {
+        state.language = "ur";
+        const sel = $("langSelect");
+        if (sel) sel.value = "ur";
+      }
+      updateVoiceList();
     });
 
     $("voiceSelect").addEventListener("change", (e) => { state.voice = e.target.value; });
@@ -426,7 +510,9 @@ const Studio = (() => {
 
     counts();
     refreshStatus();
-    loadEngines();
+    loadLanguages().then(() => {
+      loadEngines();
+    });
     loadHistory();
   }
 

@@ -32,6 +32,8 @@ const API = (() => {
   return {
     health: () => call("/api/health"),
     engines: () => call("/api/engines"),
+    languages: () => call("/api/languages"),
+    voices: (lang, engine) => call("/api/voices?lang=" + encodeURIComponent(lang || "") + "&engine=" + encodeURIComponent(engine || "")),
     quota: () => call("/api/quota"),
     generate: (payload) => json("/api/generate", "POST", payload),
     job: (id) => call("/api/jobs/" + encodeURIComponent(id)),

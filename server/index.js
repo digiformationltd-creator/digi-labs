@@ -18,6 +18,8 @@ const path = require("node:path");
 const { spawn, execFileSync } = require("node:child_process");
 
 const gemini = require("./engines/gemini-tts");
+const edge = require("./engines/edge-tts");
+const catalog = require("./engines/voices-catalog");
 const fx = require("./engines/audio-fx");
 const stt = require("./engines/transcribe");
 const jobsStore = require("./jobs");
@@ -97,7 +99,7 @@ app.get("/api/health", (_req, res) => {
     python: !!python(),
     ffmpeg: !!ffmpeg(),
     gemini_keys: gemini.keyCount(),
-    edge_ready: false,
+    edge_ready: !!python(),
   });
 });
 
@@ -125,10 +127,32 @@ app.get("/api/engines", (_req, res) => {
         voices: gemini.VOICES,
         styles: gemini.styleList(),
         quota: q,
-        best_for: "Short, polished pieces — adverts, intros, product lines. Male voices only.",
+        best_for: "Studio narration in any global language. Gemini native audio. Male voices only.",
+      },
+      {
+        id: "free",
+        name: "Free Voice",
+        subtitle: "Edge Neural · unlimited & free",
+        kind: "local",
+        ready: !!py,
+        reason: !py ? "Python with edge-tts is missing — run setup in Settings." : "",
+        voices: edge.VOICES,
+        styles: edge.styleList(),
+        quota: null,
+        best_for: "Audiobooks & long scripts. 75+ global languages & dialects. Male voices only.",
       },
     ],
   });
+});
+
+app.get("/api/languages", (_req, res) => {
+  res.json({ ok: true, languages: catalog.getLanguages() });
+});
+
+app.get("/api/voices", (req, res) => {
+  const lang = String(req.query.lang || "ur");
+  const engine = String(req.query.engine || "studio");
+  res.json({ ok: true, voices: catalog.getVoicesForLanguage(lang, engine) });
 });
 
 app.get("/api/quota", (_req, res) => res.json({ ok: true, ...gemini.quota() }));
@@ -141,13 +165,13 @@ app.post("/api/generate", (req, res) => {
   const text = String(req.body && req.body.text || "").trim();
   const engineId = String(req.body && req.body.engine || "studio");
   if (!text) return res.status(400).json({ ok: false, message: "Type or paste some text first." });
-  if (!["studio"].includes(engineId)) {
+  if (!["studio", "free"].includes(engineId)) {
     return res.status(400).json({ ok: false, message: `Unknown engine "${engineId}".` });
   }
 
   const job = jobsStore.create({
     engine: engineId,
-    engineName: "Studio Voice (Gemini)",
+    engineName: engineId === "free" ? "Free Voice (Edge Neural)" : "Studio Voice (Gemini)",
     text,
     voice: String(req.body.voice || ""),
     language: String(req.body.language || ""),
@@ -164,6 +188,23 @@ app.post("/api/generate", (req, res) => {
 async function run(job) {
   const id = job.job_id;
   try {
+    if (job.engine === "free") {
+      const py = python();
+      if (!py) throw new Error("The studio's Python is not installed yet. Open Settings and run the setup.");
+      jobsStore.stage(id, "Speaking with Free Neural Voice", 30);
+      const out = await edge.speak({
+        text: job.text,
+        voice: job.voice,
+        lang: job.language,
+        style: job.style,
+        speed: job.speed,
+        python: py,
+      });
+      job.voice = out.voice;
+      jobsStore.finish(id, out.buffer, AUDIO);
+      return;
+    }
+
     // Studio engine. Gemini accepts 8,000 characters per request, but a chunk
     // that large produces minutes of audio in one call and overruns the 120s
     // request timeout — measured: 1,500 chars is ~24s, so a 7,000-char chunk
@@ -180,7 +221,13 @@ async function run(job) {
       for (let i = 0; i < chunks.length; i++) {
         jobsStore.stage(id, chunks.length > 1 ? `Speaking ${i + 1} of ${chunks.length}` : "Speaking",
                         10 + (i / chunks.length) * 75);
-        const out = await gemini.speak({ text: chunks[i], voice: job.voice, style: job.style, ffmpeg: ff });
+        const out = await gemini.speak({
+          text: chunks[i],
+          voice: job.voice,
+          style: job.style,
+          language: job.language,
+          ffmpeg: ff,
+        });
         job.voice = out.voice;
         const p = path.join(os.tmpdir(), `digilabs_${id}_${i}.mp3`);
         fs.writeFileSync(p, out.buffer);
@@ -205,8 +252,16 @@ function splitForSpeech(text, limit) {
   let rest = text;
   while (rest.length > limit) {
     const window = rest.slice(0, limit);
-    let cut = Math.max(window.lastIndexOf(". "), window.lastIndexOf("۔"),
-                       window.lastIndexOf("!"), window.lastIndexOf("?"), window.lastIndexOf("\n"));
+    let cut = Math.max(
+      window.lastIndexOf(". "),
+      window.lastIndexOf("۔"),
+      window.lastIndexOf("।"),
+      window.lastIndexOf("!"),
+      window.lastIndexOf("?"),
+      window.lastIndexOf("؟"),
+      window.lastIndexOf("。"),
+      window.lastIndexOf("\n")
+    );
     if (cut < limit * 0.5) cut = window.lastIndexOf(" ");
     if (cut <= 0) cut = limit;
     out.push(rest.slice(0, cut + 1).trim());
@@ -214,6 +269,7 @@ function splitForSpeech(text, limit) {
   }
   if (rest.trim()) out.push(rest.trim());
   return out;
+}
 }
 
 function concat(ff, parts, id) {

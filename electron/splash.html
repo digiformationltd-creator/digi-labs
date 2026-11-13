@@ -16,14 +16,22 @@
     --text-muted: #64748B;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body { height: 100%; overflow: hidden; }
+  html, body { height: 100%; overflow: hidden; background: transparent !important; }
   body {
-    background: radial-gradient(900px 600px at 50% -10%, rgba(56,189,248,0.10), transparent 60%), var(--bg-base);
-    color: var(--text-primary);
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    padding: 8px;
     display: grid; place-items: center;
     -webkit-user-select: none; user-select: none;
-    border: 1px solid var(--glass-border);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: var(--text-primary);
+  }
+  .splash-card {
+    width: 100%; height: 100%;
+    background: radial-gradient(900px 600px at 50% -10%, rgba(56,189,248,0.14), transparent 60%), #07090e;
+    border-radius: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.85), 0 0 35px rgba(56, 189, 248, 0.16);
+    display: grid; place-items: center;
+    overflow: hidden;
   }
 
   .wrap { text-align: center; width: 100%; padding: 0 44px; }
@@ -76,12 +84,14 @@
 </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="mark"><img src="../web/assets/logo-round.png" alt=""></div>
-    <h1>Digi Labs</h1>
-    <div class="by">by DigiFormation Ltd</div>
-    <div class="track"><span></span></div>
-    <div id="stage">Starting the studio…</div>
+  <div class="splash-card">
+    <div class="wrap">
+      <div class="mark"><img src="../web/assets/logo-round.png" alt=""></div>
+      <h1>Digi Labs</h1>
+      <div class="by">by DigiFormation Ltd</div>
+      <div class="track"><span></span></div>
+      <div id="stage">Starting the studio…</div>
+    </div>
   </div>
 <script>
   // The main process reports real stages here. If it never does, the text simply

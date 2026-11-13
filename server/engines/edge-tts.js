@@ -16,17 +16,10 @@ const fs = require("node:fs");
 const os = require("node:os");
 const path = require("node:path");
 const { spawn } = require("node:child_process");
+const catalog = require("./voices-catalog");
 
-// Urdu first, because that is what this studio is mostly for.
-const VOICES = [
-  { id: "ur-PK-AsadNeural", label: "Asad — Urdu (Pakistan)", lang: "ur" },
-  { id: "hi-IN-MadhurNeural", label: "Madhur — Hindi (India)", lang: "hi" },
-  { id: "en-US-AndrewMultilingualNeural", label: "Andrew — English (multilingual)", lang: "en" },
-  { id: "en-US-BrianMultilingualNeural", label: "Brian — English (multilingual)", lang: "en" },
-  { id: "en-GB-RyanNeural", label: "Ryan — English (UK)", lang: "en" },
-  { id: "en-US-GuyNeural", label: "Guy — English (US)", lang: "en" },
-  { id: "ar-SA-HamedNeural", label: "Hamed — Arabic", lang: "ar" },
-];
+// Global male voices catalog (75+ languages)
+const VOICES = catalog.ALL_EDGE_VOICES;
 
 // Delivery presets. Each one moves rate, pitch and volume together, for the
 // reason in the header.
@@ -41,7 +34,8 @@ const STYLES = {
 function voiceFor(id, lang) {
   const hit = VOICES.find((v) => v.id === id);
   if (hit) return hit.id;
-  const byLang = VOICES.find((v) => v.lang === String(lang || "").slice(0, 2));
+  const targetLang = String(lang || "").slice(0, 2).toLowerCase();
+  const byLang = VOICES.find((v) => v.lang === targetLang);
   return (byLang || VOICES[0]).id;
 }
 
@@ -111,4 +105,4 @@ function styleList() {
   return Object.keys(STYLES).map((id) => ({ id, label: STYLE_LABELS[id] || id }));
 }
 
-module.exports = { speak, VOICES, STYLES, styleList };
+module.exports = { speak, VOICES, STYLES, styleList, catalog };
